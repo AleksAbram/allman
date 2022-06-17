@@ -4,6 +4,9 @@ import useOnClickOutside from '../../hooks/onClickOutside';
 import BurgerButton from '../BurgerButton/BurgerButton';
 import { MenuContext } from '../../context/navState';
 import { SideMenu } from '../SideMenu/SideMenu';
+import MyButton from '../UI/MyButton/MyButton';
+import MyModal from '../UI/MyModal/MyModal';
+import Auth from '../Authorization/Authorization';
 
 const Navbar = styled.div`
   display: flex;
@@ -16,7 +19,7 @@ const Navbar = styled.div`
   margin: 0px;
   align-items: center;
   background: #082bff none repeat scroll 0% 0%;
-  color: rgb(248, 248, 248);
+  color: #0B0000;
   min-width: 0px;
   min-height: 0px;
   flex-direction: row;
@@ -27,6 +30,8 @@ const Navbar = styled.div`
 `;
 
 const MainMenu = () => {
+  const [modalLog, setModalLog] = React.useState(false)
+
   const node = useRef();
   const { isMenuOpen, toggleMenuMode } = useContext(MenuContext);
   useOnClickOutside(node, () => {
@@ -40,9 +45,17 @@ const MainMenu = () => {
     <header ref={node}>
       <Navbar>
         <BurgerButton />
-        <h1>Website</h1>
+        <h1>Все мужчины</h1>
+        <div>
+          <MyButton style={{ marginTop: 30 }} onClick={() => setModalLog(true)}>
+            Войти
+          </MyButton>
+          <MyModal visible={modalLog} setVisible={setModalLog}>
+            {modalLog && <Auth />}
+          </MyModal>
+        </div>
       </Navbar>
-      <SideMenu/>
+      <SideMenu />
     </header>
   );
 };
