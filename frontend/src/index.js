@@ -1,10 +1,12 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './components/App/App';
+import * as ReactDOMClient from 'react-dom/client';
+import { store as globalStore } from './redux/store'
+import { Provider } from 'react-redux';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    <App />
-);
+const container = document.querySelector('#root')
+const root = ReactDOMClient.createRoot(container)
+
+root.render( <Provider store={globalStore}><App /></Provider>);
 
