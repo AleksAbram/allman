@@ -1,4 +1,9 @@
+package-lock.json
 # Logs
+.DS_Store
+sessions
+.env
+
 logs
 *.log
 npm-debug.log*
