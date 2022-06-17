@@ -1,75 +1,86 @@
-const sequelize = require('../db');
 const { DataTypes } = require('sequelize');
+const sequelize = require('../db');
 
 const User = sequelize.define('user', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  email: { type: DataTypes.STRING, unique: true, },
-  password: { type: DataTypes.STRING },
-  role: { type: DataTypes.STRING, defaultValue: "User" },
-})
+  user_email: { type: DataTypes.STRING, unique: true },
+  user_password: { type: DataTypes.STRING },
+  user_role: { type: DataTypes.STRING, defaultValue: 'User' },
+  user_name: { type: DataTypes.STRING },
+});
 
 const Basket = sequelize.define('basket', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }
-})
-const BasketDevice = sequelize.define('basket_device', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }
-})
-const Device = sequelize.define('device', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING, unique: true, allowNull: false },
-  price: { type: DataTypes.INTEGER, allowNull: false },
-  rating: { type: DataTypes.INTEGER, defaultValue: 0 },
-  img: { type: DataTypes.TEXT, allowNull: true },// true 
-})
+});
+
+const Item = sequelize.define('item', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  item_name: { type: DataTypes.STRING, unique: true, allowNull: false },
+  item_price: { type: DataTypes.INTEGER, allowNull: false },
+  item_detailes: { type: DataTypes.STRING },
+});
+const ItemImage = sequelize.define('item_image', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  item_image_url: { type: DataTypes.STRING, allowNull: false },
+});
 const Type = sequelize.define('type', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING, unique: true, allowNull: false },
-})
-const Brand = sequelize.define('brand', {
+  type_name: { type: DataTypes.STRING, unique: true, allowNull: false },
+  type_parent: { type: DataTypes.INTEGER },
+});
+
+const AtelierService = sequelize.define('atelier_service', {
   id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  name: { type: DataTypes.STRING, unique: true, allowNull: false },
-})
-const Rating = sequelize.define('rating', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  rate: { type: DataTypes.STRING, allowNull: false },
-})
-const DeviceInfo = sequelize.define('device_info', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
-  title: { type: DataTypes.STRING, allowNull: false },
+  atelier_service_title: { type: DataTypes.STRING, allowNull: false },
   description: { type: DataTypes.STRING, allowNull: false },
-})
+});
+const AtelierAppointment = sequelize.define('AtelierAppointment', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  atelier_name: { type: DataTypes.STRING },
+  atelier_phone: { type: DataTypes.STRING },
+  atelier_email: { type: DataTypes.STRING },
+  atelier_price: { type: DataTypes.STRING },
+});
 
-const TypeBrand = sequelize.define('type_brand', {
-  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true }
-})
+const Size = sequelize.define('size', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  size_title: { type: DataTypes.STRING, allowNull: false },
+});
 
-User.hasOne(Basket)
-Basket.belongsTo(User)
+const ItemSize = sequelize.define('item_size', {
+  id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+  item_size_quantity: { type: DataTypes.INTEGER },
+});
 
-User.hasMany(Rating)
-Rating.belongsTo(User)
+User.hasMany(Basket);
+Basket.belongsTo(User);
 
-Basket.hasMany(BasketDevice)
-BasketDevice.belongsTo(Basket)
+Item.hasMany(Basket);
+Basket.belongsTo(Item);
 
-Type.hasMany(Device)
-Device.belongsTo(Type)
+AtelierService.hasMany(AtelierAppointment);
+AtelierAppointment.belongsTo(AtelierService);
 
-Brand.hasMany(Device)
-Device.belongsTo(Brand)
+Type.hasMany(Item);
+Item.belongsTo(Type);
 
-Device.hasMany(Rating)
-Rating.belongsTo(Device)
+Type.hasMany(Size);
+Size.belongsTo(Type);
 
-Device.hasMany(BasketDevice)
-BasketDevice.belongsTo(Device)
+Item.belongsToMany(Size, { through: ItemSize });
+Size.belongsToMany(Item, { through: ItemSize });
 
-Device.hasMany(DeviceInfo, {as:'info'})
-DeviceInfo.belongsTo(Device)
-
-Type.belongsToMany(Brand, { through: TypeBrand })
-Brand.belongsToMany(Type, { through: TypeBrand })
+Item.hasMany(ItemImage);
+ItemImage.belongsTo(Item);
 
 module.exports = {
-  User, Basket, BasketDevice, Device, Type, Brand, Rating, TypeBrand, DeviceInfo
-}
+  User,
+  Basket,
+  Item,
+  Type,
+  AtelierService,
+  Size,
+  AtelierAppointment,
+  ItemSize,
+  ItemImage,
+};
