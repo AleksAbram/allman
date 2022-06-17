@@ -7,8 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import MyButton from '../UI/MyButton/MyButton';
 import MyModal from '../UI/MyModal/MyModal';
-import Login from '../Login/Login';
-import Registration from '../Registration/Registration';
+import Auth from '../Authorization/Authorization';
 
 export default function Header() {
   const [modalLog, setModalLog] = React.useState(false)
@@ -32,7 +31,7 @@ export default function Header() {
             Войти
           </MyButton>
           <MyModal visible={modalLog} setVisible={setModalLog}>
-            {modalLog && <Login />}
+            {modalLog && <Auth/>}
           </MyModal>
         </Toolbar>
       </AppBar>

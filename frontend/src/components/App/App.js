@@ -1,15 +1,13 @@
 import Header from '../Header/Header';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import Login from '../Login/Login';
-import Registration from '../Registration/Registration';
+import Auth from '../Authorization/Authorization';
 function App() {
   return (
     <BrowserRouter>
       <Header />
       <Routes>
-        <Route path="/login" element={<Login />} />
-        <Route path="/registration" element={<Registration />} />
+        <Route path="/auth" element={<Auth/>} />
       </Routes>
     </BrowserRouter>
   );
