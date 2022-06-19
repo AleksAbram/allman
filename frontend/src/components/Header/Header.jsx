@@ -12,11 +12,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import ViewHeadlineIcon from '@mui/icons-material/ViewHeadline'
 import MyModal from '../UI/MyModal/MyModal';
 import Auth from '../Authorization/Authorization';
 import MenuPopupState from '../DropDown/DropDown';
@@ -81,7 +76,7 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const arrCategories = [{ title: "Одежда", links: [{ text: 'Костюмы', id: 'clothes' }, { text: 'Рубашки и сорочки', id: 'clothes' }, { text: 'Тренчи', id: 'clothes' }, { text: 'Пиджаки', id: 'clothes' }, { text: 'Брюки', id: 'clothes' }] }, { title: "Обувь", links: [{ text: 'Дерби', id: 'shoes' }, { text: 'Оксворды', id: 'shoes' }, { text: 'Лоферы', id: 'shoes' }, { text: 'Кеды', id: 'shoes' }] }, { title: "Аксессуары", links: [{ text: 'Ремни', id: 'accessories' }, { text: 'Галстуки', id: 'accessories' }, { text: 'Бабочки', id: 'accessories' }]}, { title: "О нас", links: [{ text: 'Кто мы ? Что мы ?', id: 'about' }]}, { title: "Сертификаты", links: [{ text: 'День рождения', id: 'certificates' }]}]
   return (
 
     <Box sx={{ display: 'flex' }}>
@@ -117,7 +112,7 @@ export default function PersistentDrawerLeft() {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-            
+
           },
         }}
         variant="persistent"
@@ -131,10 +126,9 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          <MenuPopupState children={[{ text: 'Рубашки' }]} title="Одежда" />
-          <MenuPopupState children={[{ text: 'Броги' }]} title="Обувь" />
-          <MenuPopupState children={[{ text: 'Ремни' }]} title="Аксессуары" />
-          <MenuPopupState children={[{ text: 'День рождения' }]} title="Сертификаты" />
+          {arrCategories.map((el) => {
+            return <MenuPopupState children={el.links} title={el.title} />
+          })}
         </List>
       </Drawer>
       <Main open={open}>
