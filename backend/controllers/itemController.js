@@ -1,8 +1,9 @@
+/* eslint-disable consistent-return */
 /* eslint-disable class-methods-use-this */
 /* eslint-disable camelcase */
 const uuid = require('uuid');
 const path = require('path'); // Встроенный модуль path, который есть в NODE
-const { Item } = require('../models/models');
+const { Item, ItemImage } = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 class ItemController {
@@ -35,10 +36,15 @@ class ItemController {
     let items;
     try {
       if (!typeId) {
-        items = await Item.findAndCountAll({ limit, offset });
+        items = await Item.findAndCountAll({
+          limit,
+          offset,
+          include: [{ model: ItemImage, as: 'item_images' }],
+        });
       } else {
         items = await Item.findAndCountAll({ where: { typeId }, limit, offset });
       }
+      console.log(items);
       return res.json(items);
     } catch (error) {
       next(ApiError.badRequest(error.message));
