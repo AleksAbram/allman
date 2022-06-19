@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/auth" element={<Auth />} />
-        <Route path="/" element={<Map/>}/>
+        <Route path="/map" element={<Map/>}/>
         <Route path="/detail/:id" element={<DetailPage/>}/>
       </Routes>
     </BrowserRouter>
