@@ -5,7 +5,7 @@ import {
   Container
 } from '@mui/material';
 import { useEffect } from 'react';
-
+import './map.css'
 
 
 function Map() {
@@ -13,8 +13,8 @@ function Map() {
   const initMap = () => {
     window.ymaps.ready(() => {
       myMap = new window.ymaps.Map('map', {
-        center: [59.97, 30.35],
-        zoom: 10,
+        center: [51.5292015377373, 46.020748135559664],
+        zoom: 15,
         controls: [
           'zoomControl',
           'searchControl',
@@ -22,21 +22,21 @@ function Map() {
           'routeButtonControl',
         ],
       });
-      let coords = firstGeoObj.geometry.getCoordinates();
-      const myPlacemark = new ymaps.Placemark(
-        coords,
-        {
-          hintContent: <h5>Yoooo</h5>,
-          balloonContentHeader: <h3>Yooo</h3>,
-
-          balloonContentBody: <h3>Yoo</h3>,
-          balloonContentFooter: <h4>Yo</h4>,
-        },
-        {
-          iconLayout: 'default#image',
-          iconImageSize: [45, 45],
-        }
-      );
+      // let coords = firstGeoObj.geometry.getCoordinates();
+      myPlacemark = new ymaps.Placemark([51.52930886664101, 46.02028925893021], {
+        // Свойства.
+        // Содержимое хинта.
+        hintContent: 'Надпись, которая всплаывет при наведении на метку'
+      }, {
+        // Опции
+        // Своё изображение иконки метки.
+        iconImageHref: 'https://static.tildacdn.com/tild3061-3235-4537-b066-616662373363/Group_783.svg',
+        // Размеры метки.
+        iconImageSize: [130, 130],
+        // Смещение левого верхнего угла иконки относительно
+        // её "ножки" (точки привязки).
+        iconImageOffset: [-65, -110]
+      })
 
       myMap?.geoObjects.add(myPlacemark);
     });
@@ -51,13 +51,23 @@ function Map() {
     };
   }, []);
   return (
-    <Container>
-      <Typography variant="h4" sx={{ py: 2 }}>
-        {/* Карта площадок: */}
-      </Typography>
+    <div className='map-container'>
+      <Container>
+        <Typography variant="h4" sx={{ py: 0.5 }}>
+          {/* Карта площадок: */}
+        </Typography>
 
-      <Box id="map" sx={{ height: 600, mb: 5 }}></Box>
-    </Container>
+        <Box id="map" sx={{ height: 500, mb: 0.5, width: '100%'}}></Box>
+      </Container>
+      <div class="map-info">
+        <div class="map-address">
+          Торговый центр; Россия, Саратов, 3-я Дачная улица
+        </div>
+        <div class="map-phone">
+          <a href="tel:+79999999999">+7 (999) 999-99-99</a>, <a href="tel:+79999999999">+7 (999) 999-99-99</a>
+        </div>
+      </div>
+    </div>
   );
 }
 
