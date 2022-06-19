@@ -3,7 +3,6 @@
   flex-direction: column;
   align-items: center;
   text-transform: uppercase;
-  font-size: 20px;
 }
 
 .header {
@@ -52,7 +51,7 @@
 }
 
 .three-pics {
-  margin-top: 80px;
+  margin-top: 4.7vw;
   display: flex;
   justify-content: space-between;
   width: 70vw;
@@ -70,10 +69,11 @@
 
 .cat-label {
   margin-top: 15px;
+  font-size: 2.4vw;
 }
 
 .barbershop {
-  margin-top: 80px;
+  margin-top: 4.7vw;
   height: 30vw;
   background-image: 
     url("../../../public/img/barbershop.png");
@@ -87,7 +87,7 @@
 }
 
 .atelier {
-  margin-top: 80px;
+  margin-top: 4.7vw;
   height: 30vw;
   background-image: 
     url("../../../public/img/atelier.png");
@@ -101,7 +101,7 @@
 }
 
 .stylist {
-    margin-top: 80px;
+    margin-top: 4.7vw;
     height: 54vw;
     background-image: 
       url("../../../public/img/stylist.png");
