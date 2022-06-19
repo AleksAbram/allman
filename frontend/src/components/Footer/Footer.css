@@ -1,0 +1,29 @@
+.footer {
+  width: 70vw;
+  height: 12vw;
+  padding: 1.2vw;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  height: 12vw;
+  justify-content: center;
+  text-align: center;
+}
+
+.contact-label {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 1.2vw;
+  padding-bottom: 0.6vw;
+}
+
+.contact-contact {
+  padding-top: 0.6vw;
+  font-size: 1.4vw;
+}
