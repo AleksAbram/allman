@@ -126,10 +126,9 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          <MenuPopupState children={[{ text: 'Рубашки' }]} title="Одежда" />
-          <MenuPopupState children={[{ text: 'Броги' }]} title="Обувь" />
-          <MenuPopupState children={[{ text: 'Ремни' }]} title="Аксессуары" />
-          <MenuPopupState children={[{ text: 'День рождения' }]} title="Сертификаты" />
+          {[{ title: "Одежда", links: [{ text: 'Рубашки', id: 'shorts' }] }, { title: "Обувь", links: [{ text: 'Рубашки', id: 'shorts' }] }].map((el) => {
+            return <MenuPopupState children={el.links} title={el.title} />
+          })}
         </List>
       </Drawer>
       <Main open={open}>
