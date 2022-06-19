@@ -13,6 +13,7 @@ export const authUsersFetch = (data) => {
   }
 }
 
+
 export const regUsersFetch = (data) => {
   return (dispatch) => {
     fetch("/registration", {
