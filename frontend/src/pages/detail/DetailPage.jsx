@@ -9,9 +9,10 @@ const mockData = {
     description: 'Рубашки от мистера Алекса!'
   }
 }
+
 const DetailPage = () => {
   const [data, setData] = useState({})
-  const {id} = useParams()
+  const { id } = useParams()
 
   useEffect(() => {
     setData(mockData[id])

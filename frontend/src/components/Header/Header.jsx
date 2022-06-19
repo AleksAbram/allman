@@ -76,7 +76,7 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const arrCategories = [{ title: "Одежда", links: [{ text: 'Костюмы', id: 'clothes' }, { text: 'Рубашки и сорочки', id: 'clothes' }, { text: 'Тренчи', id: 'clothes' }, { text: 'Пиджаки', id: 'clothes' }, { text: 'Брюки', id: 'clothes' }] }, { title: "Обувь", links: [{ text: 'Дерби', id: 'shoes' }, { text: 'Оксворды', id: 'shoes' }, { text: 'Лоферы', id: 'shoes' }, { text: 'Кеды', id: 'shoes' }] }, { title: "Аксессуары", links: [{ text: 'Ремни', id: 'accessories' }, { text: 'Галстуки', id: 'accessories' }, { text: 'Бабочки', id: 'accessories' }]}, { title: "О нас", links: [{ text: 'Кто мы ? Что мы ?', id: 'about' }]}, { title: "Сертификаты", links: [{ text: 'День рождения', id: 'certificates' }]}]
   return (
 
     <Box sx={{ display: 'flex' }}>
@@ -126,7 +126,7 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          {[{ title: "Одежда", links: [{ text: 'Рубашки', id: 'shorts' }] }, { title: "Обувь", links: [{ text: 'Рубашки', id: 'shorts' }] }].map((el) => {
+          {arrCategories.map((el) => {
             return <MenuPopupState children={el.links} title={el.title} />
           })}
         </List>
