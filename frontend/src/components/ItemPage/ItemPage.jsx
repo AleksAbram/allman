@@ -9,7 +9,7 @@ function ItemPage() {
 
   useEffect(() => {
     console.log('useEffect');
-    dispatch(action.itemsFetch());
+    dispatch(action.itemsFetch(1));
 
     return () => {
       // TODO: очистить эффект отправки fetch-запроса (отменить запрос)
@@ -19,7 +19,6 @@ function ItemPage() {
 
   return (
     <>
-      <h2>items</h2>
       {
         itemError
           ? <p>{itemError}</p>
