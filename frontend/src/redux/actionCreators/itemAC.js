@@ -14,3 +14,10 @@ export const initItemsErrorAC = (payload) => {
   }
 }
 
+export const initTypesSuccessAC = (payload) => {
+  return {
+    type: itemAT.INIT_TYPES_SUCCESS,
+    payload
+  }
+}
+

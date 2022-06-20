@@ -2,6 +2,7 @@ import {itemAT} from '../actionTypes/itemAT';
 
 const initialState = {
   list: [],
+  types: [],
   error: null,
   loading: false,
 };
@@ -11,11 +12,24 @@ function itemReducer(prevState = initialState, action) {
   switch (action.type) {
 
     case itemAT.INIT_ITEMS_SUCCESS: {
+      var formatter = new Intl.NumberFormat('ru-RU', {
+        style: 'currency',
+        currency: 'RUB',
+        maximumFractionDigits: 0,
+      });
+      const list = action.payload.map((item) => ({...item, item_price: formatter.format(item.item_price)}));
       return {
         ...prevState,
         loading: false,
         error: null,
-        list: action.payload,
+        list,
+      }
+    }
+
+    case itemAT.INIT_TYPES_SUCCESS: {
+      return {
+        ...prevState,
+        types: action.payload,
       }
     }
 
