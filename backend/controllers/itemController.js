@@ -37,6 +37,16 @@ class ItemController {
     }
   }
 
+  async getTypes(req, res) {
+    let types;
+    try {
+      types = await Type.findAll();
+      res.json(types);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
   async getAll(req, res, next) {
     const { typeId } = req.params;
     let {
@@ -84,7 +94,8 @@ class ItemController {
       );
       return res.json(item);
     } catch (error) {
-      next(ApiError.badRequest(error.message));
+      console.log(error.message);
+      // next(ApiError.badRequest(error.message));
     }
   }
 }
