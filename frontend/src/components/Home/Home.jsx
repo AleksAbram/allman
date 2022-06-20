@@ -4,13 +4,6 @@ function Home() {
   return (
 
   <div className="container">
-    {/* <div className="header">
-        <img className="burger" src="img/BURGER.png" />
-      <div className="title">
-        ALL MAN
-      </div>
-        <img className="bag" src="img/BAG.png" />
-    </div> */}
     <div className="main">
       <div className="main-button" id="cc-button">Classic<br />clothes</div>
       <div className="main-button" id="shoes-button">Atelier</div>
