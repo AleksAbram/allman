@@ -1,0 +1,54 @@
+.item-container {
+  width: 80vw;
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.item-image {
+  height: 42vw;
+  object-fit: scale-down;
+
+}
+
+.info {
+  height: 42vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 10vw;
+  font-size: 1.5vw;
+}
+
+.size {
+  width: fit-content;
+}
+.detail{
+  padding-bottom: 1vw;
+  font-size: 1.1vw;
+}
+.info-size-label {
+  font-size: 1.1vw;
+}
+
+.info-name {
+  font-size: 1.5vw;
+  font-weight: 600;
+  text-transform: uppercase;
+
+}
+.size-select {
+  margin-top: .5vw;
+  width: 100%;
+  font-size: 1.1vw;
+}
+
+.basket-button {
+  width: fit-content;
+  background-color: black;
+  padding: .5vw 4vw .5vw 4vw;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.4vw;
+  
+}
