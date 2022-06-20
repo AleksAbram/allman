@@ -6,7 +6,7 @@ const path = require('path');
 const sequelize = require('./db');
 const models = require('./models/models');
 const router = require('./routes/index.routes');
-const errorHandler = require('./middleware/ErrorHandingMiddleware');
+// const errorHandler = require('./middleware/ErrorHandingMiddleware');
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,7 +18,7 @@ app.use(fileUpload({}));
 app.use('/api', router);
 
 // Обработка ошибок. Должен идти последним!
-app.use(errorHandler);
+// app.use(errorHandler);
 
 const start = async () => {
   console.log(process.env.DATABASE_URL);
