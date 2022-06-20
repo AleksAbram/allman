@@ -3,8 +3,20 @@
 /* eslint-disable camelcase */
 const uuid = require('uuid');
 const path = require('path'); // Встроенный модуль path, который есть в NODE
-const { Item, ItemImage } = require('../models/models');
+const { Op } = require('sequelize');
+const { Item, ItemImage, Type } = require('../models/models');
 const ApiError = require('../error/ApiError');
+
+function getChildrenTypes(types, parentId) {
+  let children = types.filter((type) => type.type_parent === parentId);
+  if (children.length > 0) {
+    for (let i = 0; i < children.length; i += 1) {
+      children = [...children, ...getChildrenTypes(types, children[i].id)];
+    }
+    return children;
+  }
+  return [];
+}
 
 class ItemController {
   async create(req, res, next) {
@@ -26,7 +38,7 @@ class ItemController {
   }
 
   async getAll(req, res, next) {
-    const { typeId } = req.query;
+    const { typeId } = req.params;
     let {
       limit, page,
     } = req.query;
@@ -42,12 +54,23 @@ class ItemController {
           include: [{ model: ItemImage, as: 'item_images' }],
         });
       } else {
-        items = await Item.findAndCountAll({ where: { typeId }, limit, offset });
+        const allTypes = await Type.findAll();
+        const types = [typeId, ...getChildrenTypes(allTypes, Number(typeId)).map((t) => t.id)];
+        items = await Item.findAndCountAll({
+          where: {
+            typeId: {
+              [Op.in]: types,
+            },
+          },
+          limit,
+          offset,
+          include: [{ model: ItemImage, as: 'item_images' }],
+        });
       }
-      console.log(items);
       return res.json(items);
     } catch (error) {
-      next(ApiError.badRequest(error.message));
+      console.log(error.message);
+      // next(ApiError.badRequest(error.message));
     }
   }
 

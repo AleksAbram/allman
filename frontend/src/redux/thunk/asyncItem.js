@@ -1,11 +1,11 @@
 import { initItemsErrorAC, initItemsSuccessAC } from "../actionCreators/itemAC"
 
 const action = {
-  itemsFetch: (data) => (dispatch) => {
-    fetch("http://localhost:4000/api/items", {
+  itemsFetch: (type) => (dispatch) => {
+    const url = type ? `http://localhost:4000/api/items/type/${type}` : `http://localhost:4000/api/items`;
+    fetch(url, {
       headers: { "content-type": "application/json" },
       method: "GET",
-      body: JSON.stringify()
     })
       .then(res => res.json())
       .then(data => {

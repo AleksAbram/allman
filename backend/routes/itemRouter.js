@@ -2,6 +2,7 @@ const itemRouter = require('express').Router();
 const itemController = require('../controllers/itemController');
 
 itemRouter.post('/', itemController.create);
+itemRouter.get('/type/:typeId', itemController.getAll);
 itemRouter.get('/', itemController.getAll);
 itemRouter.get('/:id', itemController.getOne);
 
