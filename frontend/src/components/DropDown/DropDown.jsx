@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 export default function MenuPopupState(props) {
   const navigate = useNavigate()
   return (
-    <PopupState variant="popover" popupId="demo-popup-menu">
+    <PopupState variant="popover" popupId="demo-popup-menu" >
       {(popupState) => (
         <React.Fragment>
           <ButtonBar variant="contained" {...bindTrigger(popupState)}>

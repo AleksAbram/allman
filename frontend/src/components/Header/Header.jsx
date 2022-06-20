@@ -16,6 +16,7 @@ import MyModal from '../UI/MyModal/MyModal';
 import Auth from '../Authorization/Authorization';
 import MenuPopupState from '../DropDown/DropDown';
 import AuthButton from '../UI/AuthButton/AuthButton';
+import { ListItemButton, ListItemText } from '@mui/material';
 
 const drawerWidth = 140;
 
@@ -79,18 +80,18 @@ export default function PersistentDrawerLeft() {
   const arrCategories = [{ title: "Одежда", links: [{ text: 'Костюмы', id: 'clothes' }, { text: 'Рубашки и сорочки', id: 'clothes' }, { text: 'Тренчи', id: 'clothes' }, { text: 'Пиджаки', id: 'clothes' }, { text: 'Брюки', id: 'clothes' }] }, { title: "Обувь", links: [{ text: 'Дерби', id: 'shoes' }, { text: 'Оксворды', id: 'shoes' }, { text: 'Лоферы', id: 'shoes' }, { text: 'Кеды', id: 'shoes' }] }, { title: "Аксессуары", links: [{ text: 'Ремни', id: 'accessories' }, { text: 'Галстуки', id: 'accessories' }, { text: 'Бабочки', id: 'accessories' }]}, { title: "О нас", links: [{ text: 'Кто мы ? Что мы ?', id: 'about' }]}, { title: "Сертификаты", links: [{ text: 'День рождения', id: 'certificates' }]}]
   return (
 
-    <Box sx={{ display: 'flex' }}>
 
+    <Box sx={{ display: 'flex'}} >
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#010101' }}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#000' }}>
 
-        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
+        <Toolbar style={{ display: 'flex', justifyContent: 'space-between'}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{ mr: 2, ...(open && { display: 'none' })}}
           >
             <MenuIcon />
           </IconButton>
@@ -112,26 +113,26 @@ export default function PersistentDrawerLeft() {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
-
+            backgroundColor: '#000'
           },
         }}
         variant="persistent"
         anchor="left"
         open={open}
       >
-        <DrawerHeader >
-          <IconButton onClick={handleDrawerClose}>
+        <DrawerHeader sx={{backgroundColor: '#'}}>
+          <IconButton onClick={handleDrawerClose} sx={{backgroundColor: '#fff'}}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <ListItemText sx={{backgroundColor: '#'}}>
           {arrCategories.map((el) => {
             return <MenuPopupState children={el.links} title={el.title} />
           })}
-        </List>
+        </ListItemText>
       </Drawer>
-      <Main open={open}>
+      <Main open={open} >
         <DrawerHeader />
       </Main>
     </Box>
