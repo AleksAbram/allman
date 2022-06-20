@@ -7,6 +7,7 @@ import DetailPage from '../../pages/detail/DetailPage';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 import ItemListPage from '../ItemListPage/ItemListPage';
+import ItemPage from '../ItemPage/ItemPage';
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,8 @@ function App() {
         <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<Home />} />
         <Route path="/items" element={<ItemListPage type={1}/>} />
+        <Route path="/items/:id" element={<ItemPage/>} />
+
       </Routes>
       <Footer />
     </BrowserRouter>

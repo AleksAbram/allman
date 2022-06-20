@@ -4,7 +4,9 @@
 const uuid = require('uuid');
 const path = require('path'); // Встроенный модуль path, который есть в NODE
 const { Op } = require('sequelize');
-const { Item, ItemImage, Type } = require('../models/models');
+const {
+  Item, ItemImage, Type, Size,
+} = require('../models/models');
 const ApiError = require('../error/ApiError');
 
 function getChildrenTypes(types, parentId) {
@@ -42,6 +44,16 @@ class ItemController {
     try {
       types = await Type.findAll();
       res.json(types);
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
+
+  async getSizes(req, res) {
+    let sizes;
+    try {
+      sizes = await Size.findAll();
+      res.json(sizes);
     } catch (error) {
       console.log(error.message);
     }

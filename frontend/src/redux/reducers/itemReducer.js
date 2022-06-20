@@ -3,6 +3,7 @@ import {itemAT} from '../actionTypes/itemAT';
 const initialState = {
   list: [],
   types: [],
+  sizes: [],
   error: null,
   loading: false,
 };
@@ -30,6 +31,13 @@ function itemReducer(prevState = initialState, action) {
       return {
         ...prevState,
         types: action.payload,
+      }
+    }
+
+    case itemAT.INIT_SIZES_SUCCESS: {
+      return {
+        ...prevState,
+        sizes: action.payload,
       }
     }
 

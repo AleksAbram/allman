@@ -21,3 +21,10 @@ export const initTypesSuccessAC = (payload) => {
   }
 }
 
+export const initSizesSuccessAC = (payload) => {
+  return {
+    type: itemAT.INIT_SIZES_SUCCESS,
+    payload
+  }
+}
+
