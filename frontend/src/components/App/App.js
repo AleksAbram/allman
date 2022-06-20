@@ -6,7 +6,7 @@ import Map from '../YM/YandexMap';
 import DetailPage from '../../pages/detail/DetailPage';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
-import ItemPage from '../ItemPage/ItemPage';
+import ItemListPage from '../ItemListPage/ItemListPage';
 function App() {
   return (
     <BrowserRouter>
@@ -16,7 +16,7 @@ function App() {
         <Route path="/detail/:id" element={<DetailPage />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<Home />} />
-        <Route path="/items" element={<ItemPage />} />
+        <Route path="/items" element={<ItemListPage type={1}/>} />
       </Routes>
       <Footer />
     </BrowserRouter>
