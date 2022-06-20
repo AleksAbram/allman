@@ -3,7 +3,7 @@
   border: 8px solid #000000;
   margin: 20px 0;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 16px 20px rgba(0,0,0,0.2);
-  /* filter: grayscale(0.8) brightness(1) ; */
+  filter: grayscale(0.8) brightness(1) ;
 }
 
 .map-container .ymaps-2-1-79-ground-pane {

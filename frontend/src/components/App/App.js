@@ -1,4 +1,3 @@
-import Header from '../Header/Header';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Auth from '../Authorization/Authorization';
@@ -7,6 +6,7 @@ import DetailPage from '../../pages/detail/DetailPage';
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 import ItemPage from '../ItemPage/ItemPage';
+import Header from '../Header/Header';
 function App() {
   return (
     <BrowserRouter>

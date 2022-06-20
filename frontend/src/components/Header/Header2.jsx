@@ -66,7 +66,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function Header() {
+export default function Header2() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [modalLog, setModalLog] = React.useState(false)
@@ -84,7 +84,7 @@ export default function Header() {
 
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar position="fixed" sx={{ backgroundColor: '#000', zIndex: '20'}}>
+      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#000' }}>
 
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
@@ -92,7 +92,7 @@ export default function Header() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2 }}
+            sx={{ mr: 2, ...(open && { display: 'none' }) }}
           >
             <MenuIcon />
           </IconButton>
@@ -107,7 +107,7 @@ export default function Header() {
           </MyModal>
         </Toolbar>
       </AppBar>
-      {/* <Drawer
+      <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -122,18 +122,16 @@ export default function Header() {
         open={open}
       >
         <DrawerHeader sx={{ backgroundColor: '#0' }}>
-          <IconButton onClick={handleDrawerClose} sx={{ backgroundColor: '#fff' }}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon sx={{ backgroundColor: '#fff' }} /> : <ChevronRightIcon sx={{ backgroundColor: '#f00' }} />}
+          <IconButton >
           </IconButton>
         </DrawerHeader>
         <Divider />
         <ListItemText sx={{ backgroundColor: '#' }}>
           {arrCategories.map((el) => {
-            return <MenuPopupState children={el.links} title={el.title} />
+            return <SideBar children={el.links} title={el.title} />
           })}
         </ListItemText>
-      </Drawer> */}
-      <SideBar setOpen={setOpen} isOpen={open} />
+      </Drawer>
       <Main open={open} >
         <DrawerHeader />
       </Main>
