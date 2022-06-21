@@ -14,10 +14,9 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MyModal from '../UI/MyModal/MyModal';
 import Auth from '../Authorization/Authorization';
-import MenuPopupState from '../DropDown/DropDown';
 import AuthButton from '../UI/AuthButton/AuthButton';
 import { ListItemButton, ListItemText } from '@mui/material';
-import SideBar from '../DropDown/SideBar';
+import SideBar from '../SideBar/SideBar';
 
 const drawerWidth = 140;
 
