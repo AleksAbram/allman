@@ -11,6 +11,7 @@ import ItemPage from '../ItemPage/ItemPage';
 import { useDispatch } from 'react-redux';
 import action from '../../redux/thunk/asyncItem';
 import { useEffect } from 'react';
+import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/items" element={<ItemListPage type={1}/>} />
         <Route path="/items/:id" element={<ItemPage/>} />
+        <Route path="/admin/items/:id" element={<ItemPageForEdit/>} />
 
       </Routes>
       <Footer />
