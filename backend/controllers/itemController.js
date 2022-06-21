@@ -21,6 +21,12 @@ function getChildrenTypes(types, parentId) {
 }
 
 class ItemController {
+  // async edit(req, res, next) {
+  //   const photo = `/${req.file.path.split('/').slice(1).join('/')}`;
+  //   console.log(photo);
+  //   res.json({ ok: 'OK' });
+  // }
+
   async create(req, res, next) {
     try {
       const {

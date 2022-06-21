@@ -31,7 +31,7 @@ function ItemPage() {
   return (
     <div className="item-container">
       {item && <>
-      <img className="item-image" src={item.item_images[0].item_image_url} />
+      <img className="item-image" src={`http://localhost:4000${item.item_images[0].item_image_url}`} />
       <div className="info">
         <div className="name-price">
           <div className="info-name">{item.item_name}</div>

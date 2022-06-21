@@ -3,18 +3,17 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import action from "../../redux/thunk/asyncItem";
-import {useForm} from 'react-hook-form';
 import "./ItemPage.css";
 
 function ItemPageForEdit() {
   const {id} = useParams();
   const image = useRef();
+  const form = useRef();
   const dispatch = useDispatch();
   const sizes = useSelector((state) => state.item.sizes);
   const items = useSelector((state) => state.item.list);
   const [selectedSize, setSelectedSize] = useState('');
   const [item, setItem] = useState(null);
-  const { register, handleSubmit } = useForm();
   const [newImage, setNewImage] = useState(null);
 
   useEffect(() => {
@@ -43,22 +42,35 @@ function ItemPageForEdit() {
     setNewImage(window.URL.createObjectURL(e.target.files[0]))
   }
 
+  const submitHandler = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    fetch(`http://localhost:4000/api/items/${id}`, {
+      method: 'POST',
+      body: formData,
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      }).catch(error => console.log(error.message));
+  };
+
+
   return (
     <>
       {item && <div className="item-container">
-      <img ref={image} className="item-image" src={newImage ? newImage : item.item_images[0].item_image_url} />
+      <img ref={image} className="item-image" src={newImage ? newImage : `http://localhost:4000${item.item_images[0].item_image_url}`} />
       <div className="edit-info">
-        <form encType="multipart/form-data" id="itemForm" className="item-form" onSubmit={handleSubmit(handleSubmit)}>
+        <form onSubmit={submitHandler} encType="multipart/form-data" id="itemForm" className="item-form">
         
             <input name="item_name" className="item-input" value={item.item_name} onChange={changeHandler} type="text"/>
-            <input name="item_price" className="item-input" value={item.item_price} onChange={changeHandler}/>
+            <input name="item_price" className="item-input" value={item.item_price.replace(/\D+/g, '')} onChange={changeHandler}/>
             <textarea rows="4" className="item-input" onChange={changeHandler} name="item_description" value={item.item_description}/>
-            <textarea rows="4" name="item_details" className="item-input" value={item.item_details} onChange={changeHandler} type="text"/>
+            <textarea id="item_details" rows="4" name="item_details" className="item-input" value={item.item_details} onChange={changeHandler} type="text"/>
             <input name="item_care" className="item-input" value={item.item_care} onChange={changeHandler} type="text"/>
             <input name="item_images" className="item-input custom-file-input" type="file" multiple={true} onChange={fileChange}accept="image/png, image/jpg, image/gif, image/jpeg"/>
 
-        </form>
             <button type="Submit" className="save-button op-08">Сохранить</button>
+        </form>
       </div>
       </div>
       }
