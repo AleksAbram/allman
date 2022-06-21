@@ -1,6 +1,6 @@
 import MultilevelSidebar from "react-multilevel-sidebar";
 import "react-multilevel-sidebar/src/Sidebar.css";
-
+import "./SideBar.css"
 let options = [
   {
     content: [
@@ -11,23 +11,23 @@ let options = [
         children: [
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Костюмы", to: "/my-courses" }]
+            content: [{ id: 1, name: "Костюмы", to: "/items/5" }]
           }, 
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Тренчи", to: "/my-courses" }]
+            content: [{ id: 1, name: "Тренчи", to: "/items/7" }]
           },
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Сорочки и рубашки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Сорочки и рубашки", to: "/items/6" }]
           },
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Пиджаки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Пиджаки", to: "/items/4" }]
           },
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Брюки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Брюки", to: "/items/8" }]
           }
         ]
       }
@@ -90,21 +90,17 @@ let options = [
 
 export default function SideBar(props) {
   const handleClick = (itemOptions) => {
-    /* 
-        do something with the item you clicked.
-        you can also send custom properties of your choice
-        in the options array you'll be getting those here
-        whenever you click that item
-    */
+ 
   };
 
   return (
     <div>
       <MultilevelSidebar
+        wrapperClassName={'customSidebar'}
         open={props.isOpen}
         onToggle={props.setOpen}
         options={options}
-        header="React-MultiLevel-Sidebar"
+        // header="React-MultiLevel-Sidebar"
         onItemClick={handleClick}
       />
     </div>

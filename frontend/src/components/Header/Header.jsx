@@ -77,13 +77,13 @@ export default function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const arrCategories = [{ title: "Одежда", links: [{ text: 'Костюмы', id: 'clothes' }, { text: 'Рубашки и сорочки', id: 'clothes' }, { text: 'Тренчи', id: 'clothes' }, { text: 'Пиджаки', id: 'clothes' }, { text: 'Брюки', id: 'clothes' }] }, { title: "Обувь", links: [{ text: 'Дерби', id: 'shoes' }, { text: 'Оксворды', id: 'shoes' }, { text: 'Лоферы', id: 'shoes' }, { text: 'Кеды', id: 'shoes' }] }, { title: "Аксессуары", links: [{ text: 'Ремни', id: 'accessories' }, { text: 'Галстуки', id: 'accessories' }, { text: 'Бабочки', id: 'accessories' }] }, { title: "О нас", links: [{ text: 'Кто мы ? Что мы ?', id: 'about' }] }, { title: "Сертификаты", links: [{ text: 'День рождения', id: 'certificates' }] }]
+  
   return (
 
 
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar position="fixed" sx={{ backgroundColor: '#000', zIndex: '20'}}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20'}}>
 
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
@@ -106,32 +106,6 @@ export default function Header() {
           </MyModal>
         </Toolbar>
       </AppBar>
-      {/* <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            backgroundColor: '#000'
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader sx={{ backgroundColor: '#0' }}>
-          <IconButton onClick={handleDrawerClose} sx={{ backgroundColor: '#fff' }}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon sx={{ backgroundColor: '#fff' }} /> : <ChevronRightIcon sx={{ backgroundColor: '#f00' }} />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <ListItemText sx={{ backgroundColor: '#' }}>
-          {arrCategories.map((el) => {
-            return <MenuPopupState children={el.links} title={el.title} />
-          })}
-        </ListItemText>
-      </Drawer> */}
       <SideBar setOpen={setOpen} isOpen={open} />
       <Main open={open} >
         <DrawerHeader />
