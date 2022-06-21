@@ -8,7 +8,15 @@ import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
 import ItemListPage from '../ItemListPage/ItemListPage';
 import ItemPage from '../ItemPage/ItemPage';
+import { useDispatch } from 'react-redux';
+import action from '../../redux/thunk/asyncItem';
+import { useEffect } from 'react';
+
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(action.itemsFetch());
+  })
   return (
     <BrowserRouter>
       <Header />

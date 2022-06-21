@@ -11,11 +11,18 @@ function ItemPage() {
   const sizes = useSelector((state) => state.item.sizes);
   const items = useSelector((state) => state.item.list);
   const [selectedSize, setSelectedSize] = useState('');
+  const [item, setItem] = useState(null);
+
 
   useEffect(() => {
-    console.log(items);
     dispatch(action.sizesFetch());
-  }, [])
+    const currentItem = items.filter((item) => item.id === Number(id))[0];
+    if (!currentItem) {
+      dispatch(action.itemFetch(id));
+    } else {
+      setItem(currentItem);
+    }
+  }, [items, dispatch, id])
 
   const handleSelect = (e) => {
     setSelectedSize(e.target.value);
@@ -23,16 +30,17 @@ function ItemPage() {
 
   return (
     <div className="item-container">
-      <img className="item-image" src={items[id - 1].item_images[0].item_image_url} />
+      {item && <>
+      <img className="item-image" src={item.item_images[0].item_image_url} />
       <div className="info">
         <div className="name-price">
-          <div className="info-name">{items[id - 1].item_name}</div>
-          <div className="info-price">{items[id - 1].item_price}</div>
+          <div className="info-name">{item.item_name}</div>
+          <div className="info-price">{item.item_price}</div>
         </div>
         <div className="size">
           <div className="info-size-label">Выберите размер:</div>
-          <select onChange={handleSelect} className="size-select">
-          {sizes.filter((size) => size.typeId === items[0].typeId).map((size) =>     
+          <select value={selectedSize} onChange={handleSelect} className="size-select">
+          {sizes.filter((size) => size.typeId === item.typeId).map((size) =>     
               <option key={size.id} value={size.size_title}>
                 {size.size_title}
               </option>
@@ -40,12 +48,14 @@ function ItemPage() {
           </select>
         </div>
         <div className="details">
-          <div className="detail">{items[id-1].item_description}</div>
-          <div className="detail">{items[id-1].item_details}</div>
-          <div className="detail">{items[id-1].item_care}</div>
+          <div className="detail">{item.item_description}</div>
+          <div className="detail">{item.item_details}</div>
+          <div className="detail">{item.item_care}</div>
         </div>
         <div className="basket-button op-08">Добавить<br />в корзину</div>
       </div>
+      </>
+}
     </div>
   );
 } 

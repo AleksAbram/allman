@@ -104,7 +104,7 @@ class ItemController {
           where: { id },
         },
       );
-      return res.json(item);
+      return res.json({ item });
     } catch (error) {
       console.log(error.message);
       // next(ApiError.badRequest(error.message));

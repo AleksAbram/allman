@@ -1,6 +1,21 @@
-import { initItemsErrorAC, initItemsSuccessAC, initTypesSuccessAC, initSizesSuccessAC } from "../actionCreators/itemAC"
+import { getItemSuccessAC, initItemsErrorAC, initItemsSuccessAC, initTypesSuccessAC, initSizesSuccessAC } from "../actionCreators/itemAC"
 
 const action = {
+
+  itemFetch: (id) => (dispatch) => {
+    const url = `http://localhost:4000/api/items/${id}`;
+    fetch(url, {
+      headers: { "content-type": "application/json" },
+      method: "GET",
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log('itemFetch', data.item);
+        dispatch(getItemSuccessAC(data.item))}
+        )
+      .catch(err => dispatch(initItemsErrorAC(err.message)))
+  },
+
   itemsFetch: (type) => (dispatch) => {
     const url = type ? `http://localhost:4000/api/items/type/${type}` : `http://localhost:4000/api/items`;
     fetch(url, {
