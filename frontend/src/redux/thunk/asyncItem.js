@@ -1,4 +1,4 @@
-import { initItemsErrorAC, initItemsSuccessAC } from "../actionCreators/itemAC"
+import { initItemsErrorAC, initItemsSuccessAC, initTypesSuccessAC, initSizesSuccessAC } from "../actionCreators/itemAC"
 
 const action = {
   itemsFetch: (type) => (dispatch) => {
@@ -9,11 +9,37 @@ const action = {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         dispatch(initItemsSuccessAC(data.rows))}
         )
       .catch(err => dispatch(initItemsErrorAC(err.message)))
-  }
+  },
+
+  typesFetch: () => (dispatch) => {
+    fetch('http://localhost:4000/api/items/types', {
+      method: 'GET',
+      headers: { "content-type": "application/json" },
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(initTypesSuccessAC(data));
+    })
+    .catch(err => dispatch(initItemsErrorAC(err.message)))
+  },
+
+  sizesFetch: () => (dispatch) => {
+    fetch('http://localhost:4000/api/items/sizes', {
+      method: 'GET',
+      headers: { "content-type": "application/json" },
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(initSizesSuccessAC(data));
+    })
+    .catch(err => dispatch(initItemsErrorAC(err.message)))
+  },
+
+
+
 }
 
 export default action;

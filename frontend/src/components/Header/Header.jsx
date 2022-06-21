@@ -100,7 +100,7 @@ export default function PersistentDrawerLeft() {
       links: [
         { text: "Дерби", id: "shoes" },
         { text: "Оксворды", id: "shoes" },
-        { text: "Лоферы", id: "shoes" },
+        { text: "Монки", id: "shoes" },
         { text: "Кеды", id: "shoes" },
       ],
     },
