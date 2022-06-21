@@ -3,7 +3,6 @@ import React, {useEffect, useState} from 'react';
 
 function Barbershop(props) {
     const [advice, setAdvice] = useState("");
-    // const token = '6y6nzmdgrmdwctjcmgpg';
     useEffect(()=> {
         const bbh = async () => {
             try{

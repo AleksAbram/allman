@@ -9,7 +9,16 @@ import Footer from '../Footer/Footer';
 import AboutMe from '../AboutMe/AboutMe';
 import Barbershop from '../Barbershop/Barbershop';
 import GiftCertificates from '../GiftCertificates/GiftCertificates';
+import ItemPage from '../ItemPage/ItemPage';
+import {useSelector, useDispatch} from 'react-redux'
+import {useEffect} from 'react'
+import { checkAuthFetch } from '../../redux/thunk/asyncUser';
+
 function App() {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(checkAuthFetch())
+  }, [])
   return (
     <BrowserRouter>
       <Header />
@@ -21,6 +30,7 @@ function App() {
         <Route path="/about" element={<AboutMe/>} />
         <Route path="/barbershop" element={<Barbershop/>} />
         <Route path="/certificates" element={<GiftCertificates/>} />
+        <Route path="/items" element={<ItemPage />} />
       </Routes>
       <Footer />
     </BrowserRouter>

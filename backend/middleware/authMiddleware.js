@@ -1,19 +1,25 @@
-/* eslint-disable consistent-return */
-const jwt = require('jsonwebtoken');
-
-module.exports = function (req, res, next) {
-  if (req.method === 'OPTIONS') {
+const cookiesCleaner = (req, res, next) => {
+  if (req.cookies.sid && !req.session.user) {
+    res.clearCookie('sid');
+    res.redirect('/');
+  } else {
     next();
-  }
-  try {
-    const token = req.headers.authorization.split(' ')[1];
-    if (!token) {
-      return res.status(401).json({ message: 'Не авторизован' });
-    }
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
-    req.user = decoded;
-    next();
-  } catch (e) {
-    res.status(401).json({ message: 'Не авторизован' });
   }
 };
+
+const sessionChecker = (req, res, next) => {
+  if (req.session.user) {
+    res.redirect('/');
+  } else {
+    next();
+  }
+};
+
+const local = (req, res, next) => {
+  if (req.session.user) {
+    res.locals.user = req.session.user;
+  }
+  return next();
+};
+
+module.exports = { cookiesCleaner, sessionChecker, local };

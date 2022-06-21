@@ -1,5 +1,5 @@
 import React from "react";
-// import Map from "../YM/YandexMap";
+import Map from "../YM/YandexMap";
 import "./AboutMe.css"; 
 
 function AboutMe(props) {
@@ -18,7 +18,7 @@ function AboutMe(props) {
         Классика или модельный вариант? Решать только тебе! Мы гарантируем
         идеальную мужскую стрижку при любом раскладе!
       </p>
-      {/* <Map /> */}
+      <Map />
     </div>
   );
 }
