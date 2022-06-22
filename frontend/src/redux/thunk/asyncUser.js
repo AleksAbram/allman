@@ -1,6 +1,7 @@
 import { authUsersAC, logoutUserAC, fetchUserUpdateAC, addUserPhotoAC } from "../actionCreators/userAC"
 
 export const authUsersFetch = (data) => {
+
   return (dispatch) => {
     fetch("http://localhost:4000/api/user/login", {
       credentials: 'include',

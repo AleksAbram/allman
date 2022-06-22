@@ -1,23 +1,27 @@
-import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import MyModal from "../UI/MyModal/MyModal";
-import Auth from "../Authorization/Authorization";
-import MenuPopupState from "../DropDown/DropDown";
-import AuthButton from "../UI/AuthButton/AuthButton";
+
+//import MenuPopupState from "../DropDown/DropDown";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutFetch } from "../../redux/thunk/asyncUser";
+import * as React from 'react';
+import { styled, useTheme } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import CssBaseline from '@mui/material/CssBaseline';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import MyModal from '../UI/MyModal/MyModal';
+import Auth from '../Authorization/Authorization';
+import AuthButton from '../UI/AuthButton/AuthButton';
+import { ListItemButton, ListItemText } from '@mui/material';
+import SideBar from '../SideBar/SideBar';
+
 
 const drawerWidth = 140;
 
@@ -67,6 +71,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Header() {
+
   const dispatch = useDispatch()
   const {user} = useSelector((state) => state.user);
   console.log(user);
@@ -82,18 +87,20 @@ export default function Header() {
     setOpen(false);
   };
 
+    return (
 
-  return (
-    <Box sx={{ display: "flex" }}>
+
+    <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "#010101" }}>
-        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20'}}>
+
+        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: "none" }) }}
+            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
@@ -118,8 +125,8 @@ export default function Header() {
           </MyModal>
         </Toolbar>
       </AppBar>
-        <DrawerHeader/>
-      <Main open={open}>
+      <SideBar setOpen={setOpen} isOpen={open} />
+      <Main open={open} >
         <DrawerHeader />
       </Main>
     </Box>

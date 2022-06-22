@@ -1,0 +1,18 @@
+#react-sidebar .customSidebar {
+background-color: rgb(0, 0, 0);
+}
+
+.sidebar-main-content ul li {
+  color: #ffffff;
+  display: flex;
+  justify-content: end;
+}
+
+.sidebar-main-content ul li:hover{
+background-color: rgb(22, 22, 22);
+transition: background-color 3s cubic-bezier(0.1, 0.8, 0.5, 2), color 7s 3s linear;
+}
+
+.sidebar-main-content {
+  margin-top: 10vh;
+}

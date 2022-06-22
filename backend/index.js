@@ -1,28 +1,28 @@
 require("dotenv").config();
 const config = require('./configjs/configjs');
 const express = require('express');
-const fileUpload = require('express-fileupload');
+// const fileUpload = require('express-fileupload');
 const cors = require('cors');
 const path = require('path');
 const sequelize = require('./db');
-const models = require('./models/models');
 const router = require('./routes/index.routes');
 // const errorHandler = require('./middleware/ErrorHandingMiddleware');
 
 
-// const errorHandler = require("./middleware/ErrorHandingMiddleware");
-// const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 4000;
 
 
 config(app);
 
+const publicPath = path.resolve('public');
+app.use(express.static(publicPath));
+app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(express.json());
+app.use(express.static(path.resolve(__dirname, 'static')));
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', router);
 
-// app.use(cors({ origin: 'http://localhost:3001', credentials: true })); ///'http://localhost:3000'
-// app.use(express.json());
-app.use(fileUpload({}));
-app.use("/api", router);
 
 // Обработка ошибок. Должен идти последним!
 // app.use(errorHandler);
