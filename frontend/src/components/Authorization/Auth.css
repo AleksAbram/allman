@@ -1,0 +1,34 @@
+.MyModal_myModalContent__gQngB {
+  background: linear-gradient(-15deg, #383e5f, #6980cc, #F6D98F, #e2aab2, #833E5B) !important;
+  /* background-size: 400% 400%  !important; */
+  animation: gradient 15s ease infinite !important;
+}
+
+@keyframes gradient{
+  0% {
+      background-position: 0% 50% !important;
+  }
+  50% {
+      background-position: 100% 50% !important;
+  }
+  100% {
+      background-position: 0% 50% !important;
+  }
+}
+
+.css-1vhaqj4-MuiButtonBase-root-MuiButton-root{
+  background-color: #5a2c3f !important;
+  cursor: pointer !important;
+  /* background: transparent !important; */
+  outline: none !important;
+  transition: 2s ease-in-out !important;
+}
+
+.css-1vhaqj4-MuiButtonBase-root-MuiButton-root:hover{
+  transition: 3s ease-in-out !important;
+  background: rgb(14, 7, 77) !important;
+}
+
+.css-1999axt-MuiAvatar-root{
+  background-color: #5a2c3f !important;
+}

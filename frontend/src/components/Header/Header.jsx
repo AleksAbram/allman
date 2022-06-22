@@ -21,6 +21,7 @@ import Auth from '../Authorization/Authorization';
 import AuthButton from '../UI/AuthButton/AuthButton';
 import { ListItemButton, ListItemText } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
+import './Header.css'
 
 
 const drawerWidth = 140;
@@ -73,7 +74,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function Header() {
 
   const dispatch = useDispatch()
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
   console.log(user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -87,12 +88,12 @@ export default function Header() {
     setOpen(false);
   };
 
-    return (
+  return (
 
 
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20'}}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20' }}>
 
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
@@ -103,11 +104,12 @@ export default function Header() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
+            <img src="logo.png" alt="X" />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
             ALLMAN
           </Typography>
-          {user.length > 0  ? (
+          {user.length > 0 ? (
             <AuthButton sx={{ marginTop: 30 }} onClick={() => dispatch(logoutFetch())}>
               Выйти
             </AuthButton>
@@ -118,11 +120,13 @@ export default function Header() {
             >
               Войти
             </AuthButton>
+
           )}
 
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
+          <img src="/img/BAG.png" alt="x" className="bag" />
         </Toolbar>
       </AppBar>
       <SideBar setOpen={setOpen} isOpen={open} />
