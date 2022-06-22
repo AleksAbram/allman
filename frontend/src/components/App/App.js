@@ -18,11 +18,15 @@ import { useDispatch } from 'react-redux';
 import action from '../../redux/thunk/asyncItem';
 import { useEffect } from 'react';
 import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
+import Basket from '../Basket/Basket';
+
+
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAuthFetch())
-    dispatch(action.itemsFetch());
+    //dispatch(action.itemsFetch());
   }, [dispatch])
   return (
     <BrowserRouter>
@@ -39,7 +43,7 @@ function App() {
         {/* <Route path="/items" element={<ItemPage />} /> */}
         <Route path="/items" element={<ItemListPage type={1}/>} />
         <Route path="/items/:id" element={<ItemPage/>} />
-
+        <Route path="/basket" element={<Basket/>} />
         <Route path="/admin/items/:id" element={<ItemPageForEdit/>} />
       </Routes>
       <Footer />
