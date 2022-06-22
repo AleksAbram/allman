@@ -4,7 +4,6 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const sequelize = require('./db');
-const models = require('./models/models');
 const router = require('./routes/index.routes');
 // const errorHandler = require('./middleware/ErrorHandingMiddleware');
 

@@ -79,7 +79,11 @@ class ItemController {
         items = await Item.findAndCountAll({
           limit,
           offset,
-          include: [{ model: ItemImage, as: 'item_images' }],
+          include: [
+            {
+              model: ItemImage,
+              as: 'item_images',
+            }],
         });
       } else {
         const allTypes = await Type.findAll();
@@ -93,6 +97,9 @@ class ItemController {
           limit,
           offset,
           include: [{ model: ItemImage, as: 'item_images' }],
+          order: [
+            ['item_images', 'updatedAt', 'DESC'],
+          ],
         });
       }
       return res.json(items);

@@ -27,10 +27,14 @@ itemRouter.post('/:id', upload.array('item_images'), async (req, res, next) => {
   // const photo = `/${req.file.path.split('/').slice(1).join('/')}`;
 
   try {
-    await Item.update(
-      req.body,
-      { where: { id: req.params.id } },
-    );
+    if (req.params.id !== '0') {
+      await Item.update(
+        req.body,
+        { where: { id: req.params.id } },
+      );
+    } else {
+      await Item.create({ ...req.body, typeId: 5 });
+    }
     if (req.files) {
       const photos = req.files.map((file) => (
         {
@@ -43,7 +47,7 @@ itemRouter.post('/:id', upload.array('item_images'), async (req, res, next) => {
     console.log(error);
   }
   /// console.log(photo);
-  res.json({ ok: 'OK' });
+  res.json();
 });
 
 module.exports = itemRouter;
