@@ -1,26 +1,19 @@
-
-//import MenuPopupState from "../DropDown/DropDown";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutFetch } from "../../redux/thunk/asyncUser";
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MyModal from '../UI/MyModal/MyModal';
 import Auth from '../Authorization/Authorization';
 import AuthButton from '../UI/AuthButton/AuthButton';
-import { ListItemButton, ListItemText } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
+import './Header.css'
 
 
 const drawerWidth = 140;
@@ -71,9 +64,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Header() {
-
   const dispatch = useDispatch()
-  const {user} = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.user);
+  const { basket } = useSelector((state) => state.basket);
   console.log(user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -87,12 +80,12 @@ export default function Header() {
     setOpen(false);
   };
 
-    return (
+  return (
 
 
     <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20'}}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20' }}>
 
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
@@ -107,7 +100,7 @@ export default function Header() {
           <Typography variant="h6" noWrap component="div">
             ALLMAN
           </Typography>
-          {user.length > 0  ? (
+          {user.length > 0 ? (
             <AuthButton sx={{ marginTop: 30 }} onClick={() => dispatch(logoutFetch())}>
               Выйти
             </AuthButton>
@@ -118,11 +111,16 @@ export default function Header() {
             >
               Войти
             </AuthButton>
+
           )}
 
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
+          <div className="bagCont">
+            <img src="/img/BAG.png" alt="x" className="bag" />
+            <span>{basket.length}</span>
+          </div>
         </Toolbar>
       </AppBar>
       <SideBar setOpen={setOpen} isOpen={open} />
