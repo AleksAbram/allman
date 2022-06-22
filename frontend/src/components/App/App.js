@@ -41,7 +41,9 @@ function App() {
         <Route path="/barbershop" element={<Barbershop/>} />
         <Route path="/certificates" element={<GiftCertificates/>} />
         {/* <Route path="/items" element={<ItemPage />} /> */}
-        <Route path="/items" element={<ItemListPage type={1}/>} />
+        {/* <Route path="/items" element={<ItemListPage type={1}/>} /> */}
+        <Route path="/items/types/:type" element={<ItemListPage />} />
+
         <Route path="/items/:id" element={<ItemPage/>} />
         <Route path="/basket" element={<Basket/>} />
         <Route path="/admin/items/:id" element={<ItemPageForEdit/>} />
