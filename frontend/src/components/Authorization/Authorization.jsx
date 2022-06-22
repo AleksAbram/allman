@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyButton from "../UI/MyButton/MyButton";
 import { authUsersFetch, regUsersFetch } from "../../redux/thunk/asyncUser";
 import {useDispatch} from 'react-redux'
-
+import "./Auth.css"
 function Copyright(props) {
   return (
     <Typography

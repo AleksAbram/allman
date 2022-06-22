@@ -13,7 +13,7 @@ import MyModal from '../UI/MyModal/MyModal';
 import Auth from '../Authorization/Authorization';
 import AuthButton from '../UI/AuthButton/AuthButton';
 import SideBar from '../SideBar/SideBar';
-import './Header.css'
+import BasketIcon from "../BasketIcon/BasketIcon";
 
 
 const drawerWidth = 140;
@@ -66,8 +66,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function Header() {
   const dispatch = useDispatch()
   const { user } = useSelector((state) => state.user);
-  const { basket } = useSelector((state) => state.basket);
-  console.log(user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [modalLog, setModalLog] = React.useState(false);
@@ -117,10 +115,7 @@ export default function Header() {
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
-          <div className="bagCont">
-            <img src="/img/BAG.png" alt="x" className="bag" />
-            <span>{basket.length}</span>
-          </div>
+       <BasketIcon/>
         </Toolbar>
       </AppBar>
       <SideBar setOpen={setOpen} isOpen={open} />
