@@ -14,8 +14,9 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import MyModal from '../UI/MyModal/MyModal';
 import Auth from '../Authorization/Authorization';
-import MenuPopupState from '../DropDown/DropDown';
 import AuthButton from '../UI/AuthButton/AuthButton';
+import { ListItemButton, ListItemText } from '@mui/material';
+import SideBar from '../SideBar/SideBar';
 
 const drawerWidth = 140;
 
@@ -64,7 +65,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-export default function PersistentDrawerLeft() {
+export default function Header() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [modalLog, setModalLog] = React.useState(false)
@@ -76,13 +77,13 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const arrCategories = [{ title: "Одежда", links: [{ text: 'Костюмы', id: 'clothes' }, { text: 'Рубашки и сорочки', id: 'clothes' }, { text: 'Тренчи', id: 'clothes' }, { text: 'Пиджаки', id: 'clothes' }, { text: 'Брюки', id: 'clothes' }] }, { title: "Обувь", links: [{ text: 'Дерби', id: 'shoes' }, { text: 'Оксворды', id: 'shoes' }, { text: 'Лоферы', id: 'shoes' }, { text: 'Кеды', id: 'shoes' }] }, { title: "Аксессуары", links: [{ text: 'Ремни', id: 'accessories' }, { text: 'Галстуки', id: 'accessories' }, { text: 'Бабочки', id: 'accessories' }]}, { title: "О нас", links: [{ text: 'Кто мы ? Что мы ?', id: 'about' }]}, { title: "Сертификаты", links: [{ text: 'День рождения', id: 'certificates' }]}]
+  
   return (
 
-    <Box sx={{ display: 'flex' }}>
 
+    <Box sx={{ display: 'flex' }} >
       <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: '#010101' }}>
+      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20'}}>
 
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <IconButton
@@ -90,7 +91,7 @@ export default function PersistentDrawerLeft() {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
-            sx={{ mr: 2, ...(open && { display: 'none' }) }}
+            sx={{ mr: 2 }}
           >
             <MenuIcon />
           </IconButton>
@@ -105,33 +106,8 @@ export default function PersistentDrawerLeft() {
           </MyModal>
         </Toolbar>
       </AppBar>
-      <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-
-          },
-        }}
-        variant="persistent"
-        anchor="left"
-        open={open}
-      >
-        <DrawerHeader >
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {arrCategories.map((el) => {
-            return <MenuPopupState children={el.links} title={el.title} />
-          })}
-        </List>
-      </Drawer>
-      <Main open={open}>
+      <SideBar setOpen={setOpen} isOpen={open} />
+      <Main open={open} >
         <DrawerHeader />
       </Main>
     </Box>
