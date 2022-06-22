@@ -8,16 +8,22 @@ import BasketRow from "./BasketRow";
 
 function Basket(){
   const dispatch = useDispatch();
+  const [orderCompleted, setOrderCompleted] = useState(false);
   //const dispatch = useDispatch();
   const basket = useSelector((state) => state.basket.basket);
   const [emptyBasketMessage, setEmptyBasketMessage] = useState('');
   useEffect(() => {
-    if (basket.length === 0) {
-      setEmptyBasketMessage('Корзина пуста')
+    console.log(basket.length, orderCompleted);
+    if (basket.length === 0 && !orderCompleted) {
+      
+      setEmptyBasketMessage('Корзина пуста');
+      console.log(emptyBasketMessage);
     }
   }, [basket])
+
   const basketAction = () => {
     dispatch({type: 'CLEAN_BASKET'});
+    setOrderCompleted(true);
     setEmptyBasketMessage('Заказ оформлен!')
   }
   return (
