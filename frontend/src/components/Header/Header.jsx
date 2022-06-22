@@ -14,7 +14,7 @@ import Auth from '../Authorization/Authorization';
 import AuthButton from '../UI/AuthButton/AuthButton';
 import SideBar from '../SideBar/SideBar';
 import BasketIcon from "../BasketIcon/BasketIcon";
-
+import './Header.css'
 
 const drawerWidth = 140;
 
@@ -103,19 +103,22 @@ export default function Header() {
               Выйти
             </AuthButton>
           ) : (
-            <AuthButton
+            <div>
+              <img 
+              src="img/login.png" alt="x" 
+              className="authIcon"
               sx={{ marginTop: 30 }}
               onClick={() => setModalLog(true)}
-            >
-              Войти
-            </AuthButton>
+              />
+            </div>
 
           )}
 
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
-       <BasketIcon/>
+
+          <BasketIcon />
         </Toolbar>
       </AppBar>
       <SideBar setOpen={setOpen} isOpen={open} />

@@ -1,5 +1,5 @@
 .MyModal_myModalContent__gQngB {
-  background: linear-gradient(-15deg, #383e5f, #6980cc, #F6D98F, #e2aab2, #833E5B) !important;
+  background: linear-gradient(-15deg, #000000, #1d1d1d, #2b2b2b, #212121, #000000) !important;
   /* background-size: 400% 400%  !important; */
   animation: gradient 15s ease infinite !important;
 }
@@ -17,7 +17,8 @@
 }
 
 .css-1vhaqj4-MuiButtonBase-root-MuiButton-root{
-  background-color: #5a2c3f !important;
+  color: #000000 !important;
+  background-color: #fffefe !important;
   cursor: pointer !important;
   /* background: transparent !important; */
   outline: none !important;
@@ -26,9 +27,30 @@
 
 .css-1vhaqj4-MuiButtonBase-root-MuiButton-root:hover{
   transition: 3s ease-in-out !important;
-  background: rgb(14, 7, 77) !important;
+  background: rgb(205, 201, 247) !important;
 }
 
 .css-1999axt-MuiAvatar-root{
   background-color: #5a2c3f !important;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+  font: inherit !important;
+    letter-spacing: inherit !important;
+    color: currentColor !important;
+    padding: 4px 0 5px ;
+    border: 0 !important;
+    box-sizing: content-box !important;
+    background: none ;
+    height: 1.4375em !important;
+    margin: 0 !important;
+    -webkit-tap-highlight-color: transparent !important;
+    display: block !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    -webkit-animation-name: mui-auto-fill-cancel !important;
+    animation-name: mui-auto-fill-cancel !important;
+    -webkit-animation-duration: 10ms !important;
+    animation-duration: 10ms !important;
+    padding: 16.5px 14px !important
 }
