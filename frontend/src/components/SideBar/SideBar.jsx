@@ -6,7 +6,7 @@ let options = [
     content: [
       {
         id: 1,
-        name: "Одежда",
+        name: "Одежда ",
         icon: <i className="fa fa-chrome"></i>,
         children: [
           {
@@ -42,16 +42,16 @@ let options = [
         children: [
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Дерби", to: "/my-courses" }]
+            content: [{ id: 1, name: "Дерби", to: "/items/9" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Оксворды", to: "/my-courses" }]
+            content: [{ id: 1, name: "Оксворды", to: "/items/10" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Лоферы", to: "/my-courses" }]
+            content: [{ id: 1, name: "Монки", to: "/items/11" }]
           },{
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Кеды", to: "/my-courses" }]
+            content: [{ id: 1, name: "Кеды", to: "/items/12" }]
           },
         ]
       }
@@ -66,13 +66,13 @@ let options = [
         children: [
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Ремни", to: "/my-courses" }]
+            content: [{ id: 1, name: "Ремни", to: "/items/13" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Бабочки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Бабочки", to: "/items/15" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Галстуки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Галстуки", to: "/items/14" }]
           }
         ]
       }
@@ -80,11 +80,11 @@ let options = [
   },
   {
     titleIcon: <i className="fa fa-graduation-cap"></i>,
-    content: [{ id: 1, name: "О нас", to: "/my-courses" }]
+    content: [{ id: 1, name: "О нас", to: "/about" }]
   },
   {
     titleIcon: <i className="fa fa-graduation-cap"></i>,
-    content: [{ id: 1, name: "Подарочные сертификаты", to: "/my-courses" }]
+    content: [{ id: 1, name: "Подарочные сертификаты", to: "/certificates" }]
   },
 ];
 
@@ -106,6 +106,10 @@ export default function SideBar(props) {
     </div>
   );
 }
+
+
+
+
 
 
 
