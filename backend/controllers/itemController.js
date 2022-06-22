@@ -84,6 +84,10 @@ class ItemController {
               model: ItemImage,
               as: 'item_images',
             }],
+          order: [
+            ['id', 'ASC'],
+            ['item_images', 'updatedAt', 'DESC'],
+          ],
         });
       } else {
         const allTypes = await Type.findAll();
@@ -98,6 +102,7 @@ class ItemController {
           offset,
           include: [{ model: ItemImage, as: 'item_images' }],
           order: [
+            ['id', 'ASC'],
             ['item_images', 'updatedAt', 'DESC'],
           ],
         });
