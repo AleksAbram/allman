@@ -15,7 +15,7 @@ function Basket(){
     if (basket.length === 0) {
       setEmptyBasketMessage('Корзина пуста')
     }
-  }, [])
+  }, [basket])
   const basketAction = () => {
     dispatch({type: 'CLEAN_BASKET'});
     setEmptyBasketMessage('Заказ оформлен!')
