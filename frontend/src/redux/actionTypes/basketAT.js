@@ -1,0 +1,7 @@
+const basketAT = {
+  ADD_TO_BASKET: 'ADD_TO_BASKET',
+  DELETE_FROM_BASKET: 'DELETE_FROM_BASKET',
+  CLEAN_BASKET: 'CLEAN_BASKET',
+};
+
+export {basketAT};
