@@ -8,6 +8,13 @@ function basketReducer(prevState = initialState, action) {
 
   switch (action.type) {
 
+    case 'DELETE_FROM_BASKET': {
+      return {
+        ...prevState,
+        basket: prevState.basket.filter((item) => item.item.id !== action.payload)
+      }
+    }
+
     case basketAT.CLEAN_BASKET: {
       return {
           ...prevState,
