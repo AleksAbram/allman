@@ -6,18 +6,32 @@ const initialState = {
   sizes: [],
   error: null,
   loading: false,
+  path: [],
 };
 
 // eslint-disable-next-line default-param-last
 function itemReducer(prevState = initialState, action) {
+  var formatter = new Intl.NumberFormat('ru-RU', {
+    style: 'currency',
+    currency: 'RUB',
+    maximumFractionDigits: 0,
+  });
+
   switch (action.type) {
 
+    case itemAT.GET_ITEM_SUCCESS: {
+      return {
+        ...prevState,
+        loading: false,
+        list: [...prevState.list, {...action.payload,
+          item_price: formatter.format(action.payload.item_price)
+        },
+        ]
+      }
+    }
+
     case itemAT.INIT_ITEMS_SUCCESS: {
-      var formatter = new Intl.NumberFormat('ru-RU', {
-        style: 'currency',
-        currency: 'RUB',
-        maximumFractionDigits: 0,
-      });
+
       const list = action.payload.map((item) => ({...item, item_price: formatter.format(item.item_price)}));
       return {
         ...prevState,

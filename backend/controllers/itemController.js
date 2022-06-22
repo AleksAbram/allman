@@ -21,6 +21,12 @@ function getChildrenTypes(types, parentId) {
 }
 
 class ItemController {
+  // async edit(req, res, next) {
+  //   const photo = `/${req.file.path.split('/').slice(1).join('/')}`;
+  //   console.log(photo);
+  //   res.json({ ok: 'OK' });
+  // }
+
   async create(req, res, next) {
     try {
       const {
@@ -73,7 +79,11 @@ class ItemController {
         items = await Item.findAndCountAll({
           limit,
           offset,
-          include: [{ model: ItemImage, as: 'item_images' }],
+          include: [
+            {
+              model: ItemImage,
+              as: 'item_images',
+            }],
         });
       } else {
         const allTypes = await Type.findAll();
@@ -87,6 +97,9 @@ class ItemController {
           limit,
           offset,
           include: [{ model: ItemImage, as: 'item_images' }],
+          order: [
+            ['item_images', 'updatedAt', 'DESC'],
+          ],
         });
       }
       return res.json(items);
@@ -104,7 +117,7 @@ class ItemController {
           where: { id },
         },
       );
-      return res.json(item);
+      return res.json({ item });
     } catch (error) {
       console.log(error.message);
       // next(ApiError.badRequest(error.message));
