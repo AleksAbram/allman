@@ -19,6 +19,7 @@ import { useDispatch } from 'react-redux';
 import action from '../../redux/thunk/asyncItem';
 import { useEffect } from 'react';
 import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
+import Atelier from '../Atelier/Atelier';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutMe/>} />
         <Route path="/barbershop" element={<Barbershop/>} />
+        <Route path="/atelier" element={<Atelier/>} />
         <Route path="/certificates" element={<GiftCertificates/>} />
         {/* <Route path="/items" element={<ItemPage />} /> */}
         <Route path="/items" element={<ItemListPage type={1}/>} />
