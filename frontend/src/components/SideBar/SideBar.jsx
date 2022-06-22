@@ -100,7 +100,6 @@ export default function SideBar(props) {
         open={props.isOpen}
         onToggle={props.setOpen}
         options={options}
-        // header="React-MultiLevel-Sidebar"
         onItemClick={handleClick}
       />
     </div>
