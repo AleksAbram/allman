@@ -3,28 +3,35 @@ import { itemAT } from "../actionTypes/itemAT"
 export const initItemsSuccessAC = (payload) => {
   return {
     type: itemAT.INIT_ITEMS_SUCCESS,
-    payload
+    payload,
   }
 }
 
 export const initItemsErrorAC = (payload) => {
   return {
     type: itemAT.INIT_ITEMS_ERROR,
-    payload
+    payload,
   }
 }
 
 export const initTypesSuccessAC = (payload) => {
   return {
     type: itemAT.INIT_TYPES_SUCCESS,
-    payload
+    payload,
   }
 }
 
 export const initSizesSuccessAC = (payload) => {
   return {
     type: itemAT.INIT_SIZES_SUCCESS,
-    payload
+    payload,
+  }
+}
+
+export const getItemSuccessAC = (payload) => {
+  return {
+    type: itemAT.GET_ITEM_SUCCEESS,
+    payload,
   }
 }
 
