@@ -1,6 +1,11 @@
 import "./Home.css"
+import {useNavigate} from 'react-router-dom'
 
 function Home() {
+  const navigate = useNavigate()
+  function suitsLink () {
+    navigate('/items')
+  }
   return (
 
   <div className="container">
@@ -11,7 +16,7 @@ function Home() {
     </div>
 
     <div className="three-pics">
-      <div className="category">
+      <div onClick={suitsLink} className="category">
         <img className="cat-pic" src="img/suits.png"></img>
         <div className="cat-label">Suits</div>
       </div>

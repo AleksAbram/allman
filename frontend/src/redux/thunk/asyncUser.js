@@ -1,35 +1,46 @@
 import { authUsersAC, logoutUserAC, fetchUserUpdateAC, addUserPhotoAC } from "../actionCreators/userAC"
 
 export const authUsersFetch = (data) => {
-  return (dispatch) => {// возвращаем новую функци, которая параметром принимает dispatch
-    fetch("/login", {
+
+  return (dispatch) => {
+    fetch("http://localhost:4000/api/user/login", {
+      credentials: 'include',
       headers: { "content-type": "application/json" },
       method: "POST",
       body: JSON.stringify(data)
     })
       .then(res => res.json())
-      .then(data => dispatch(authUsersAC(data)))//вызываем dispatch, который прокинули через параметры и в него закидываем actionCreators и в него же передаем json(в данном случае это массив пользователей, который пришел с сервера)
+      .then(data => {dispatch(authUsersAC(data)) 
+        window.location.href='/'})
       .catch(err => console.log(err.message))
+      ///{dispatch(authUsersAC(newData))
+      //window.location.href='/'}
   }
 }
 
 
-export const regUsersFetch = (data) => {
+export const regUsersFetch = (user) => {
+  console.log(user);
   return (dispatch) => {
-    fetch("/registration", {
+    fetch("http://localhost:4000/api/user/registration", {
+      credentials: 'include',
       headers: { "content-type": "application/json" },
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(user)
     })
       .then(res => res.json())
-      .then(data => dispatch(authUsersAC(data)))
+      .then(data => {dispatch(authUsersAC(data)) 
+        window.location.href='/'})
+      // .then((data) => console.log(data))
       .catch(err => console.log(err.message))
   }
 }
 
 export const checkAuthFetch = () => {
   return (dispatch) => {
-    fetch("/checkauth")
+    fetch("http://localhost:4000/api/user/check", {
+      credentials: 'include',
+    })
       .then(res => res.json())
       .then(data => dispatch(authUsersAC(data)))
       .catch(err => console.log(err.message))
@@ -38,7 +49,9 @@ export const checkAuthFetch = () => {
 
 export const logoutFetch = () => {
   return (dispatch) => {
-    fetch("/logout")
+    fetch("http://localhost:4000/api/user/logout", {
+      credentials: 'include',
+    })
       .then(res => res.json())
       .then(data => dispatch(logoutUserAC(data)))
       .catch(err => console.log(err.message))

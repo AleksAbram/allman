@@ -1,11 +1,19 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Auth from '../Authorization/Authorization';
+
+import DetailPage from '../../pages/detail/DetailPage';
+
 import Map from '../YM/YandexMap';
+
 import Home from '../Home/Home';
 import Footer from '../Footer/Footer';
+import AboutMe from '../AboutMe/AboutMe';
+import Barbershop from '../Barbershop/Barbershop';
+import GiftCertificates from '../GiftCertificates/GiftCertificates';
 import ItemListPage from '../ItemListPage/ItemListPage';
 import ItemPage from '../ItemPage/ItemPage';
+import { checkAuthFetch } from '../../redux/thunk/asyncUser';
 import Header from '../Header/Header';
 import { useDispatch } from 'react-redux';
 import action from '../../redux/thunk/asyncItem';
@@ -14,15 +22,23 @@ import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(checkAuthFetch())
     dispatch(action.itemsFetch());
-  })
+  }, [dispatch])
   return (
     <BrowserRouter>
       <Header />
       <Routes>
+        {/* <Route path="/map" element={<Map />} /> */}
+        <Route path="/detail/:id" element={<DetailPage />} />
+
         <Route path="/map" element={<Map />} />
         <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutMe/>} />
+        <Route path="/barbershop" element={<Barbershop/>} />
+        <Route path="/certificates" element={<GiftCertificates/>} />
+        {/* <Route path="/items" element={<ItemPage />} /> */}
         <Route path="/items" element={<ItemListPage type={1}/>} />
         <Route path="/items/:id" element={<ItemPage/>} />
 

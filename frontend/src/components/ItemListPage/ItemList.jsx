@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import ItemCard from './ItemCard';
 import "./ItemList.css";
 
 function ItemList() {
   const items = useSelector((state) => state.item.list);
-  const types = useSelector((state) => state.item.types);
+  // const types = useSelector((state) => state.item.types);
 
 
   return (

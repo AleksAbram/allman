@@ -1,0 +1,16 @@
+.boxpod {
+    position:  relative;
+    overflow: hidden;
+    width: 1600px;
+    height: 700px;
+}
+
+.boxpod img {
+    position: absolute;
+    top:  100%;
+    left: 50%;
+    transform:  translate(-50%, -50%);
+    width: 1700px;
+    height: 900px;
+    object-fit: cover;
+}

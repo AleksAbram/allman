@@ -1,49 +1,70 @@
-const ApiError = require("../error/ApiError")
-const { User, Basket } = require('../models/models');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require("bcrypt");
+const ApiError = require("../error/ApiError");
+const { User, Basket } = require("../models/models");
 
-const generateJWT = (id, email, role) => {
-  return jwt.sign({ id, email, role },
-    process.env.SECRET_KEY,
-    { expiresIn: '24h' }
-  )
-}
+// const generateJWT = (id, email, role, name) =>
+//   jwt.sign({ id, email, role, name }, process.env.SESSION_SECRET, {
+//     expiresIn: "24h",
+//   });
 class UserController {
-
   async registration(req, res, next) {
-    const { email, password, role } = req.body
-    if (!email || !password) {
-      return next(ApiError.badRequest('Некорректный email или password!'))
+    const { user_email, user_password, user_name } = req.body;
+    console.log(req.body);
+    if (!user_email || !user_password) {
+      return next(ApiError.badRequest("Некорректный email или password!"));
     }
-    const candidate = await User.findOne({ where: { email } })
+    const candidate = await User.findOne({ where: { user_email } });
     if (candidate) {
-      return next(ApiError.badRequest('Пользователь с таким email уже существует!'))
+      return next(
+        ApiError.badRequest("Пользователь с таким email уже существует!")
+      );
     }
-    const hashPassword = await bcrypt.hash(password, 5)
-    const user = await User.create({ email, role, password: hashPassword })
-    const basket = await Basket.create({ userId: user.id })
-    const token = generateJWT(user.id, user.email, user.role)
-    return res.json({ token })
-  }
-  async login(req, res, next) {
-    const { email, password } = req.body
-    const user = await User.findOne({ where: { email } })
-    if (!user) {
-      return next(ApiError.internal('Пользователь не найден'))
-    }
-    let comparePassword = bcrypt.compareSync(password, user.password)
-    if (!comparePassword) {
-      return next(ApiError.internal('Пользователь не найден!'))
-    }
-    const token = generateJWT(user.id, user.email, user.role)
-    return res.json({ token })
-  }
-  async check(req, res, next) {
-    const token = generateJWT(req.user.id, req.user.email, req.user.role)
-    return res.json({ token })
+    const hashPassword = await bcrypt.hash(user_password, 5);
+    const newUser = await User.create({
+      user_email,
+      user_password: hashPassword,
+      user_name,
+    });
+    req.session.user = newUser;
+    // const basket = await Basket.create({ userId: user.id });
+    res.status(201).json({user: newUser.user_role});
   }
 
+  async login(req, res, next) {
+    const { user_email, user_password } = req.body;
+    console.log('=======>req', req.body);
+    const user = await User.findOne({ where: { user_email } });
+    console.log('=======>user', user);
+    if (!user) {
+      return next(ApiError.internal("Пользователь не найден"));
+    }
+    const comparePassword = await bcrypt.compare(
+      user_password,
+      user.user_password
+    );
+    if (!comparePassword) {
+      return next(ApiError.internal("Неверный пароль"));
+    }
+    if (user && (await bcrypt.compare(user_password, user.user_password))) {
+      req.session.user = user;
+      res.status(201).json({ user: user.user_role });
+    }
+  }
+
+  async logout(req, res, next) {
+    req.session.destroy();
+    res.clearCookie('sid');
+    res.json({ user: '' });
+  }
+
+  async check(req, res, next) {
+    // console.log(req.session.user);
+    if (req.session.user) {
+      res.json({ user: req.session.user.user_role });
+    } else {
+      res.json({ user: '' });
+    }
+  }
 }
 
-module.exports = new UserController()
+module.exports = new UserController();

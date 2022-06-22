@@ -5,7 +5,7 @@ import ItemList from './ItemList';
 
 function ItemListPage({type}) {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.item.list);
+  // const items = useSelector((state) => state.item.list);
   const types = useSelector((state) => state.item.types);
   const itemError = useSelector((state) => state.item.error);
   

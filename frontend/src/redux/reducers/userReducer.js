@@ -1,6 +1,6 @@
 import { INIT_USERS, EDIT_USER, AUTH_USER, LOGOUT_USER, ADD_USER_PHOTO } from "../actionTypes/userAT"
 
-const initialState = { user: {} }
+const initialState = { user: '' }
 
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,11 +23,11 @@ export const userReducer = (state = initialState, action) => {
       }
 
     case AUTH_USER: {
-      return { ...state, user: action.payload }
+      return { ...state, user: action.payload.user }
     }
 
     case LOGOUT_USER: {
-      return { ...state, user: action.payload }
+      return { ...state, user: action.payload.user}
     }
 
     case ADD_USER_PHOTO: {

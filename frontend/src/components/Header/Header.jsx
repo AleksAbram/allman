@@ -1,3 +1,7 @@
+
+//import MenuPopupState from "../DropDown/DropDown";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutFetch } from "../../redux/thunk/asyncUser";
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -18,57 +22,62 @@ import AuthButton from '../UI/AuthButton/AuthButton';
 import { ListItemButton, ListItemText } from '@mui/material';
 import SideBar from '../SideBar/SideBar';
 
+
 const drawerWidth = 140;
 
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
+const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
+    transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: `-${drawerWidth}px`,
     ...(open && {
-      transition: theme.transitions.create('margin', {
+      transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.enteringScreen,
       }),
       marginLeft: 0,
     }),
-  }),
+  })
 );
 
 const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== 'open',
+  shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  transition: theme.transitions.create(['margin', 'width'], {
+  transition: theme.transitions.create(["margin", "width"], {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
   ...(open && {
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: `${drawerWidth}px`,
-    transition: theme.transitions.create(['margin', 'width'], {
+    transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
 }));
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
   padding: theme.spacing(0, 1),
   // necessary for content to be below app bar
   ...theme.mixins.toolbar,
-  justifyContent: 'flex-end',
+  justifyContent: "flex-end",
 }));
 
 export default function Header() {
+
+  const dispatch = useDispatch()
+  const {user} = useSelector((state) => state.user);
+  console.log(user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const [modalLog, setModalLog] = React.useState(false)
+  const [modalLog, setModalLog] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -77,8 +86,8 @@ export default function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  
-  return (
+
+    return (
 
 
     <Box sx={{ display: 'flex' }} >
@@ -98,9 +107,19 @@ export default function Header() {
           <Typography variant="h6" noWrap component="div">
             ALLMAN
           </Typography>
-          <AuthButton sx={{ marginTop: 30 }} onClick={() => setModalLog(true)}>
-            Войти
-          </AuthButton>
+          {user.length > 0  ? (
+            <AuthButton sx={{ marginTop: 30 }} onClick={() => dispatch(logoutFetch())}>
+              Выйти
+            </AuthButton>
+          ) : (
+            <AuthButton
+              sx={{ marginTop: 30 }}
+              onClick={() => setModalLog(true)}
+            >
+              Войти
+            </AuthButton>
+          )}
+
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
@@ -113,6 +132,3 @@ export default function Header() {
     </Box>
   );
 }
-
-
-
