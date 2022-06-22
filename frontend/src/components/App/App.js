@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Auth from '../Authorization/Authorization';
 
-import DetailPage from '../../pages/detail/DetailPage';
+//import DetailPage from '../../pages/detail/DetailPage';
 
 import Map from '../YM/YandexMap';
 
@@ -30,7 +30,7 @@ function App() {
       <Header />
       <Routes>
         {/* <Route path="/map" element={<Map />} /> */}
-        <Route path="/detail/:id" element={<DetailPage />} />
+        {/* <Route path="/detail/:id" element={<DetailPage />} /> */}
 
         <Route path="/map" element={<Map />} />
         <Route path="/auth" element={<Auth />} />

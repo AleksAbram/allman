@@ -76,6 +76,7 @@ class ItemController {
     let items;
     try {
       if (!typeId) {
+        console.log('!typeId');
         items = await Item.findAndCountAll({
           limit,
           offset,
@@ -84,9 +85,14 @@ class ItemController {
               model: ItemImage,
               as: 'item_images',
             }],
+          order: [
+            ['id', 'ASC'],
+            ['item_images', 'updatedAt', 'ASC'],
+          ],
         });
       } else {
         const allTypes = await Type.findAll();
+        console.log(allTypes);
         const types = [typeId, ...getChildrenTypes(allTypes, Number(typeId)).map((t) => t.id)];
         items = await Item.findAndCountAll({
           where: {
@@ -98,7 +104,8 @@ class ItemController {
           offset,
           include: [{ model: ItemImage, as: 'item_images' }],
           order: [
-            ['item_images', 'updatedAt', 'DESC'],
+            ['id', 'ASC'],
+            ['item_images', 'updatedAt', 'ASC'],
           ],
         });
       }
