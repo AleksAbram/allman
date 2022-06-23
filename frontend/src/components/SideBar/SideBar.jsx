@@ -6,28 +6,28 @@ let options = [
     content: [
       {
         id: 1,
-        name: "Одежда",
+        name: "Одежда ",
         icon: <i className="fa fa-chrome"></i>,
         children: [
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Костюмы", to: "/items/5" }]
+            content: [{ id: 1, name: "Костюмы", to: "/items/types/5" }]
           }, 
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Тренчи", to: "/items/7" }]
+            content: [{ id: 1, name: "Тренчи", to: "/items/types/7" }]
           },
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Сорочки и рубашки", to: "/items/6" }]
+            content: [{ id: 1, name: "Сорочки и рубашки", to: "/items/types/6" }]
           },
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Пиджаки", to: "/items/4" }]
+            content: [{ id: 1, name: "Пиджаки", to: "/items/types/4" }]
           },
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Брюки", to: "/items/8" }]
+            content: [{ id: 1, name: "Брюки", to: "/items/types/8" }]
           }
         ]
       }
@@ -42,16 +42,16 @@ let options = [
         children: [
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Дерби", to: "/my-courses" }]
+            content: [{ id: 1, name: "Дерби", to: "/items/types/9" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Оксворды", to: "/my-courses" }]
+            content: [{ id: 1, name: "Оксворды", to: "/items/types/10" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Лоферы", to: "/my-courses" }]
+            content: [{ id: 1, name: "Монки", to: "/items/types/11" }]
           },{
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Кеды", to: "/my-courses" }]
+            content: [{ id: 1, name: "Кеды", to: "/items/types/12" }]
           },
         ]
       }
@@ -66,13 +66,13 @@ let options = [
         children: [
           {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Ремни", to: "/my-courses" }]
+            content: [{ id: 1, name: "Ремни", to: "/items/types/13" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Бабочки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Бабочки", to: "/items/types/15" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Галстуки", to: "/my-courses" }]
+            content: [{ id: 1, name: "Галстуки", to: "/items/types/14" }]
           }
         ]
       }
@@ -80,11 +80,11 @@ let options = [
   },
   {
     titleIcon: <i className="fa fa-graduation-cap"></i>,
-    content: [{ id: 1, name: "О нас", to: "/my-courses" }]
+    content: [{ id: 1, name: "О нас", to: "/about" }]
   },
   {
     titleIcon: <i className="fa fa-graduation-cap"></i>,
-    content: [{ id: 1, name: "Подарочные сертификаты", to: "/my-courses" }]
+    content: [{ id: 1, name: "Подарочные сертификаты", to: "/certificates" }]
   },
 ];
 
@@ -100,12 +100,19 @@ export default function SideBar(props) {
         open={props.isOpen}
         onToggle={props.setOpen}
         options={options}
-        // header="React-MultiLevel-Sidebar"
         onItemClick={handleClick}
       />
     </div>
   );
 }
+
+
+
+
+
+
+
+
 
 
 

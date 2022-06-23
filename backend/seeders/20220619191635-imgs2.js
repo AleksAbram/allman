@@ -4,7 +4,7 @@ module.exports = {
     const itemIds = [
       5, 5, 6, 6, 7, 7, 8, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 14, 14, 60,
       60, 61, 61, 62, 62, 63, 63, 64, 64, 15, 16, 17, 18, 19, 19, 20, 20, 21,
-      21, 22, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33,
+      21, 22, 22, 23, 24, 28, 29, 30, 25, 26, 27, 31, 32, 33,
     ];
     const urls = [
       "/uploads/IMG_5541.JPG",
@@ -57,6 +57,9 @@ module.exports = {
       "/uploads/IMG_5588.JPG",
       "/uploads/IMG_5589.JPG",
       "/uploads/IMG_5590.JPG",
+      "/uploads/IMG_5591.JPG",
+      "/uploads/IMG_5592.JPG",
+      "/uploads/IMG_5593.JPG",
     ];
     const imgs = itemIds.map((itemId, i) => ({
       item_image_url: urls[i],

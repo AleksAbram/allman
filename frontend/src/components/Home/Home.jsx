@@ -4,7 +4,13 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 function Home() {
   const navigate = useNavigate();
   function suitsLink() {
-    navigate("/items");
+    navigate("/items/types/5");
+  }
+  function shoesLink() {
+    navigate("/items/types/9");
+  }
+  function jasketLink() {
+    navigate("/items/types/4");
   }
   function barbershopLink () {
     navigate("/barbershop")
@@ -34,11 +40,11 @@ function Home() {
             <img className="cat-pic" src="img/suits.png"></img>
             <div className="cat-label">Suits</div>
           </div>
-          <div className="category">
+          <div onClick={shoesLink} className="category">
             <img className="cat-pic" src="img/shoes.png"></img>
             <div className="cat-label">Shoes</div>
           </div>
-          <div className="category">
+          <div onClick={jasketLink} className="category">
             <img className="cat-pic" src="img/jackets.png"></img>
             <div className="cat-label">Jackets</div>
           </div>

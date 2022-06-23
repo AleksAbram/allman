@@ -1,12 +1,11 @@
 // require('dotenv').config();
-const express = require("express");
-const fileUpload = require("express-fileupload");
-const cors = require("cors");
-const session = require("express-session");
-const FileStore = require("session-file-store")(session);
-const cookieParser = require("cookie-parser");
-const path = require("path");
-const { cookiesCleaner, local } = require("../middleware/authMiddleware");
+const express = require('express');
+const cors = require('cors');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+const cookieParser = require('cookie-parser');
+const path = require('path');
+const { cookiesCleaner, local } = require('../middleware/authMiddleware');
 
 // const FileStore = sessionFileStore(session);
 
@@ -31,8 +30,8 @@ const { cookiesCleaner, local } = require("../middleware/authMiddleware");
 
 const sessionConfig = {
   store: new FileStore(),
-  name: "sid", // Имя куки для хранения id сессии. По умолчанию - connect.sid
-  secret: process.env.SESSION_SECRET ?? "azsxdcfv", // Секретное слово для шифрования, может быть любым
+  name: 'sid', // Имя куки для хранения id сессии. По умолчанию - connect.sid
+  secret: process.env.SESSION_SECRET ?? 'azsxdcfv', // Секретное слово для шифрования, может быть любым
   resave: false, // Пересохранять ли куку при каждом запросе
   saveUninitialized: false, // Создавать ли сессию без инициализации ключей в req.session
   cookie: {
@@ -44,9 +43,8 @@ const sessionConfig = {
 const config = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
-  app.use(fileUpload());
-  app.use(express.static(path.resolve(__dirname, "static")));
-//   app.use("/images", express.static(path.join(__dirname, "images")));
+  app.use(express.static(path.resolve(__dirname, 'static')));
+  //   app.use("/images", express.static(path.join(__dirname, "images")));
   app.use(cookieParser());
   app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
   app.use(session(sessionConfig));

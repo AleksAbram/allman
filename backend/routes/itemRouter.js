@@ -27,22 +27,39 @@ itemRouter.post('/:id', upload.array('item_images'), async (req, res, next) => {
   // const photo = `/${req.file.path.split('/').slice(1).join('/')}`;
 
   try {
+    let { id } = req.params;
     if (req.params.id !== '0') {
       await Item.update(
         req.body,
         { where: { id: req.params.id } },
       );
     } else {
-      await Item.create({ ...req.body, typeId: 5 });
+      const newItem = await Item.create({ ...req.body, typeId: 5 });
+      id = newItem.id;
     }
     if (req.files) {
       const photos = req.files.map((file) => (
         {
           item_image_url: `/${file.path.split('/').slice(1).join('/')}`,
-          itemId: req.params.id,
+          itemId: id,
         }));
       await ItemImage.bulkCreate(photos);
     }
+    const newItem = await Item.findOne(
+      {
+        where: { id },
+
+        include: [
+          {
+            model: ItemImage,
+            as: 'item_images',
+          }],
+        order: [
+          ['item_images', 'updatedAt', 'DESC'],
+        ],
+      },
+    );
+    return res.json(newItem);
   } catch (error) {
     console.log(error);
   }

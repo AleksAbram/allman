@@ -1,27 +1,21 @@
-
-//import MenuPopupState from "../DropDown/DropDown";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutFetch } from "../../redux/thunk/asyncUser";
-import * as React from 'react';
-import { styled, useTheme } from '@mui/material/styles';
-import Box from '@mui/material/Box';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiAppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import MyModal from '../UI/MyModal/MyModal';
-import Auth from '../Authorization/Authorization';
-import AuthButton from '../UI/AuthButton/AuthButton';
-import { ListItemButton, ListItemText } from '@mui/material';
-import SideBar from '../SideBar/SideBar';
-
+import * as React from "react";
+import { styled, useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import MuiAppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import MyModal from "../UI/MyModal/MyModal";
+import Auth from "../Authorization/Authorization";
+import AuthButton from "../UI/AuthButton/AuthButton";
+import SideBar from "../SideBar/SideBar";
+import BasketIcon from "../BasketIcon/BasketIcon";
+import "./Header.css";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const drawerWidth = 140;
 
@@ -71,10 +65,9 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 }));
 
 export default function Header() {
-
-  const dispatch = useDispatch()
-  const {user} = useSelector((state) => state.user);
-  // console.log(user);
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
+  const { user } = useSelector((state) => state.user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [modalLog, setModalLog] = React.useState(false);
@@ -86,15 +79,18 @@ export default function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  function homeNavigate () {
+    navigate('/')
+  }
 
-    return (
-
-
-    <Box sx={{ display: 'flex' }} >
+  return (
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" sx={{ backgroundColor: 'rgb(0, 0, 0)', zIndex: '20'}}>
-
-        <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
+      <AppBar
+        position="fixed"
+        sx={{ backgroundColor: "rgb(0, 0, 0)", zIndex: "20" }}
+      >
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -104,29 +100,43 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography
+            className="guidance"
+            onClick={homeNavigate}
+            variant="h6"
+            noWrap
+            component="div"
+          >
             ALLMAN
           </Typography>
-          {user.length > 0  ? (
-            <AuthButton sx={{ marginTop: 30 }} onClick={() => dispatch(logoutFetch())}>
+          {user.length > 0 ? (
+            <AuthButton
+              sx={{ marginTop: 30 }}
+              onClick={() => dispatch(logoutFetch())}
+            >
               Выйти
             </AuthButton>
           ) : (
-            <AuthButton
-              sx={{ marginTop: 30 }}
-              onClick={() => setModalLog(true)}
-            >
-              Войти
-            </AuthButton>
+            <div>
+              <img
+                src="img/login.png"
+                alt="x"
+                className="authIcon"
+                sx={{ marginTop: 30 }}
+                onClick={() => setModalLog(true)}
+              />
+            </div>
           )}
 
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
+
+          <BasketIcon />
         </Toolbar>
       </AppBar>
       <SideBar setOpen={setOpen} isOpen={open} />
-      <Main open={open} >
+      <Main open={open}>
         <DrawerHeader />
       </Main>
     </Box>

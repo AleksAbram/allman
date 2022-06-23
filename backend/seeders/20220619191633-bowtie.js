@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 module.exports = {
   async up(queryInterface) {
-    const item_name = "Галстуки";
+    const item_name = "Бабочки";
     const prices = [900, 900, 900, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700];
     const descriptions = [
       "Бабочка комбинированная ЧБ",
