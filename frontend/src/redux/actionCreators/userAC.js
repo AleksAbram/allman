@@ -1,4 +1,4 @@
-import { INIT_USERS, EDIT_USER, AUTH_USER, LOGOUT_USER, ADD_USER_PHOTO } from "../actionTypes/userAT"
+import { INIT_USERS, EDIT_USER, AUTH_USER, LOGOUT_USER, ADD_USER_PHOTO, ERROR_MESSAGE } from "../actionTypes/userAT"
 
 export const initUsersAC = (payload) => {
   return {
@@ -30,4 +30,9 @@ export const addUserPhotoAC = (payload) => {
     payload
   }
 }
-
+export const errorMessage = (payload) => {
+  return {
+    type: ERROR_MESSAGE,
+    payload,
+  }
+}

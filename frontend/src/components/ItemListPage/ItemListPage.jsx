@@ -33,7 +33,7 @@ function ItemListPage() {
     console.log(type);
     dispatch(action.itemsFetch(type));
     dispatch(action.typesFetch());
-    console.log("types: ", types);
+    // console.log("types: ", types);
     //console.log(getItemPath(type));
 
 

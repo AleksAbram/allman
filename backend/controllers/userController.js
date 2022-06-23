@@ -9,7 +9,7 @@ const { User, Basket } = require("../models/models");
 class UserController {
   async registration(req, res, next) {
     const { user_email, user_password, user_name } = req.body;
-    console.log(req.body);
+    // console.log(req.body);
     if (!user_email || !user_password) {
       return next(ApiError.badRequest("Некорректный email или password!"));
     }
@@ -27,20 +27,23 @@ class UserController {
     });
     req.session.user = newUser;
     // const basket = await Basket.create({ userId: user.id });
-    res.status(201).json({user: newUser.user_role});
+    res.status(201).json({ user: newUser.user_role });
   }
 
   async login(req, res, next) {
     const { user_email, user_password } = req.body;
-    console.log('=======>req', req.body);
+    // console.log('=======>req', req.body);
     const user = await User.findOne({ where: { user_email } });
-    console.log('=======>user', user);
+    // console.log('=======>user', user);
     if (!user) {
+      // return next(ApiError.internal("Пользователь не найден"));
+      // res.json({ message: "Пользователь не найден" });
+      // console.log('===========>', ApiError.internal("Пользователь не найден"));
       return next(ApiError.internal("Пользователь не найден"));
     }
     const comparePassword = await bcrypt.compare(
       user_password,
-      user.user_password
+      user.user_password,
     );
     if (!comparePassword) {
       return next(ApiError.internal("Неверный пароль"));
@@ -53,8 +56,8 @@ class UserController {
 
   async logout(req, res, next) {
     req.session.destroy();
-    res.clearCookie('sid');
-    res.json({ user: '' });
+    res.clearCookie("sid");
+    res.json({ user: "" });
   }
 
   async check(req, res, next) {
@@ -62,7 +65,7 @@ class UserController {
     if (req.session.user) {
       res.json({ user: req.session.user.user_role });
     } else {
-      res.json({ user: '' });
+      res.json({ user: "" });
     }
   }
 }

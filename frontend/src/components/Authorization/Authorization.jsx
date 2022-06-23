@@ -14,7 +14,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyButton from "../UI/MyButton/MyButton";
 import { authUsersFetch, regUsersFetch } from "../../redux/thunk/asyncUser";
-import {useDispatch} from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
 function Copyright(props) {
   return (
@@ -37,7 +38,7 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function Auth() {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -54,11 +55,19 @@ export default function Auth() {
     const user = {
       user_email: data.get("email"),
       user_password: data.get("password"),
-  }
-  dispatch(authUsersFetch(user));
-};
+    };
+    dispatch(authUsersFetch(user));
+  };
+  const error = useSelector((state) => state.user.error);
+
   const [modalReg, setModalReg] = React.useState(false);
   const [modalLog, setModalLog] = React.useState(false);
+  const [emailType, setEmailType] = React.useState("");
+  function handleChange(event) {
+    const email = event.target.value;
+    setEmailType({ email });
+  }
+  const { email } = emailType;
   function registr(e) {
     e.preventDefault();
     setModalReg(true);
@@ -87,7 +96,7 @@ export default function Auth() {
               <Typography component="h1" variant="h5">
                 Sign up
               </Typography>
-              <Box
+              <ValidatorForm
                 component="form"
                 noValidate
                 onSubmit={handleSubmit}
@@ -106,10 +115,17 @@ export default function Auth() {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField
+                    <TextValidator
                       required
                       fullWidth
                       id="email"
+                      onChange={handleChange}
+                      value={email}
+                      validators={["required", "isEmail"]}
+                      errorMessages={[
+                        "this field is required",
+                        "email is not valid",
+                      ]}
                       label="Email Address"
                       name="email"
                       autoComplete="email"
@@ -127,6 +143,7 @@ export default function Auth() {
                     />
                   </Grid>
                 </Grid>
+                <div style={{ color: "red" }}>{error}</div>
                 <Button
                   type="submit"
                   fullWidth
@@ -145,7 +162,7 @@ export default function Auth() {
                     </MyButton>
                   </Grid>
                 </Grid>
-              </Box>
+              </ValidatorForm>
             </Box>
             <Copyright sx={{ mt: 5 }} />
           </Container>
@@ -194,6 +211,7 @@ export default function Auth() {
                   id="password"
                   autoComplete="current-password"
                 />
+                <div style={{ color: "red" }}>{error}</div>
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
