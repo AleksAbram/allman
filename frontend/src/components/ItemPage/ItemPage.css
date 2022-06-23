@@ -117,3 +117,7 @@ height: 100;
 .custom-file-input:active::before {
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
+
+.ok-button {
+  background-color: rgb(0, 60, 0);
+}
