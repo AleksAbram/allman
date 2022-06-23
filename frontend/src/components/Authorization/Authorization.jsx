@@ -156,8 +156,6 @@ export default function Auth() {
                 <Grid container justifyContent="flex-end">
                   <Grid item>
                   <div
-                    style={{ marginTop: 30 }}
-                    onClick={(e) => registr(e)}
                   >
                     or Sign In
                   </div>
@@ -210,29 +208,22 @@ export default function Auth() {
                 />
 
                 <div style={{ color: "red" }}>{error}</div>
-                <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                />
                 <Button
                   type="submit"
                   fullWidth
                   variant="contained"
                   sx={{ mt: 3, mb: 2 }}
                 >
-                  Sign In
+                  GO
                 </Button>
-                <Typography component="h1" variant="h5">
+                <Grid container justifyContent="flex-end">
+                  <Grid item>
                   <div
                     style={{ marginTop: 30 }}
                     onClick={(e) => registr(e)}
                   >
                     or Sign Up
                   </div>
-                </Typography>
-                <Grid container>
-                  <Grid item>
-
                   </Grid>
                 </Grid>
               </Box>

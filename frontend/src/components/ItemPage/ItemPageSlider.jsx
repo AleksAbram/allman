@@ -35,9 +35,8 @@ function ItemPageSlider() {
       {item && <>
       <div className="slider-container">
         <SimpleImageSlider
-          style={{ margin: '0 auto', marginTop: '0px' }}
-          width={'100%'}
-          height={'100%'}
+          width={'30vw'}
+          height={'77vh'}
           object-fit={'scale-down'}
           images={[{ url: `http://localhost:4000${item.item_images[0].item_image_url}` }, { url: `http://localhost:4000${item.item_images[1].item_image_url}` }]}
           showBullets={true}

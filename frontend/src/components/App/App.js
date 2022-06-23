@@ -11,7 +11,6 @@ import AboutMe from '../AboutMe/AboutMe';
 import Barbershop from '../Barbershop/Barbershop';
 import GiftCertificates from '../GiftCertificates/GiftCertificates';
 import ItemListPage from '../ItemListPage/ItemListPage';
-import ItemPage from '../ItemPage/ItemPage';
 import { checkAuthFetch } from '../../redux/thunk/asyncUser';
 import Header from '../Header/Header';
 import { useDispatch } from 'react-redux';
@@ -22,6 +21,7 @@ import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
 import Atelier from '../Atelier/Atelier';
 
 import Basket from '../Basket/Basket';
+import ItemPageSlider from '../ItemPage/ItemPageSlider';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function App() {
         {/* <Route path="/items" element={<ItemListPage type={1}/>} /> */}
         <Route path="/items/types/:type" element={<ItemListPage />} />
 
-        <Route path="/items/:id" element={<ItemPage/>} />
+        <Route path="/items/:id" element={<ItemPageSlider/>} />
         <Route path="/basket" element={<Basket/>} />
         <Route path="/admin/items/:id" element={<ItemPageForEdit/>} />
       </Routes>
