@@ -1,5 +1,6 @@
 .bag {
-  width: 1.5vw;
-  height: 1.5vw;
+  width: calc(10px + 1vw);
+  height: calc(10px + 1vw);
   margin-left: 60%;
+  margin-right: calc(10px + 1vw);
 }

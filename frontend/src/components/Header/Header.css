@@ -1,6 +1,6 @@
 .authIcon{
-  width: 1.5vw;
-  height: 2vh;
+  width: calc(10px + 1vw);
+  height: calc(10px + 1vw);
 }
 
 .basketAndExit{

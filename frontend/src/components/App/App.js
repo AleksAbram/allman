@@ -21,7 +21,7 @@ import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
 import Atelier from '../Atelier/Atelier';
 
 import Basket from '../Basket/Basket';
-import ItemPageSlider from '../ItemPage/ItemPageSlider';
+import ItemPage from '../ItemPage/ItemPage';
 
 function App() {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function App() {
         {/* <Route path="/items" element={<ItemListPage type={1}/>} /> */}
         <Route path="/items/types/:type" element={<ItemListPage />} />
 
-        <Route path="/items/:id" element={<ItemPageSlider/>} />
+        <Route path="/items/:id" element={<ItemPage/>} />
         <Route path="/basket" element={<Basket/>} />
         <Route path="/admin/items/:id" element={<ItemPageForEdit/>} />
       </Routes>

@@ -6,6 +6,8 @@ import { useParams } from "react-router-dom";
 import { addToBasketAC } from "../../redux/actionCreators/basketAC";
 import action from "../../redux/thunk/asyncItem";
 import "./ItemPage.css";
+import SimpleImageSlider from "react-simple-image-slider";
+
 
 function ItemPage() {
   const {id} = useParams();
@@ -69,7 +71,20 @@ function ItemPage() {
   return (
     <div className="item-container">
       {item && <>
-      <img className="item-image" src={`http://localhost:4000${item.item_images[0].item_image_url}`} />
+        <div className="slider-container">
+        <SimpleImageSlider
+          width={'34vw'}
+          height={'42vw'}
+          object-fit={'scale-down'}
+          images={[{ url: `http://localhost:4000${item.item_images[0].item_image_url}` }, { url: `http://localhost:4000${item.item_images[1].item_image_url}` }]}
+          // showBullets={true}
+          // showNavs={true}
+          autoPlay={true}
+          loop={true}
+          slideDuration={2}
+        />
+        </div>
+      {/* <img className="item-image" src={`http://localhost:4000${item.item_images[0].item_image_url}`} /> */}
       <div className="info">
         <div className="name-price">
           <div className="info-name">{item.item_name}</div>
