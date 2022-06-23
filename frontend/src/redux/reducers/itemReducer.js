@@ -19,6 +19,13 @@ function itemReducer(prevState = initialState, action) {
   });
 
   switch (action.type) {
+    case itemAT.DELETE_ITEM_SUCCESS: {
+      return {
+        ...prevState,
+        list: prevState.list.filter((item) => item.id !== action.payload.id),
+      }
+    } 
+
     case itemAT.ADD_ITEM_SUCCESS: {
       const newList = prevState.list.filter((item) => item.id !== action.payload.id);
       return {

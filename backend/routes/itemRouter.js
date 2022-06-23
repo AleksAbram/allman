@@ -12,6 +12,7 @@ itemRouter.get('/sizes', itemController.getSizes);
 
 itemRouter.get('/', itemController.getAll);
 itemRouter.get('/:id', itemController.getOne);
+itemRouter.delete('/:id', itemController.delete);
 
 const storage = multer.diskStorage({
   destination(req, file, cb) {
