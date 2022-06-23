@@ -10,7 +10,7 @@ const action = {
     })
       .then(res => res.json())
       .then(data => {
-        console.log('itemFetch', data.item);
+        // console.log('itemFetch', data.item);
         dispatch(getItemSuccessAC(data.item))}
         )
       .catch(err => dispatch(initItemsErrorAC(err.message)))

@@ -7,9 +7,10 @@ function ItemCard({ item }) {
   const clickHandler = () => {
     navigate(`/items/${item.id}`);
   }
+  // console.log(item.item_images[0].item_image_url);
   return (
     <div className="item-card">
-      <img onClick={clickHandler} className="item-img" src={`http://localhost:4000${item.item_images[0].item_image_url}`} alt="dd" />
+      <img onClick={clickHandler} className="item-img" src={`http://localhost:4000${item?.item_images[0]?.item_image_url}`} alt="dd" />
       <div className="item-description">{item.item_description}</div>
       <div className="item-price">{item.item_price}</div>
     </div>

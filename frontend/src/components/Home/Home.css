@@ -48,6 +48,31 @@
 .main-button {
   display: inline-block;
   font-size: 1.9vw;
+  color: white;
+  text-decoration: none;
+  position: relative;
+}
+.main-button:after {
+	content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px; /* Высота линии */
+    background-color: rgb(106, 106, 106); /* Цвет подчеркивания при исчезании линии*/
+    transition: width 0.5s; /* Время эффекта */
+}
+.main-button:hover:after {
+	content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px; /* Высота линии */
+    background-color: rgb(131, 128, 128); /* Цвет подчеркивания при появлении линии*/
+    transition: width 0.5s;  /* Время эффекта */
 }
 
 .three-pics {
@@ -65,11 +90,37 @@
 }
 .cat-pic {
   width: 100%;
+  cursor: pointer;
 }
 
 .cat-label {
   margin-top: 15px;
   font-size: 2.4vw;
+  cursor: pointer;
+  position: relative;
+  /* text-decoration: none; */
+}
+.cat-label:after {
+	content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: -3px;
+    width: 0;
+    height: 2px; /* Высота линии */
+    background-color: black; /* Цвет подчеркивания при исчезании линии*/
+    transition: width 0.5s; /* Время эффекта */
+}
+.cat-label:hover:after {
+	content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 2px; /* Высота линии */
+    background-color: rgb(162, 162, 162); /* Цвет подчеркивания при появлении линии*/
+    transition: width 0.5s;  /* Время эффекта */
 }
 
 .barbershop {
@@ -140,6 +191,7 @@
   width: 15vw;
   height: 5.3vw;
   color: #0A0B0D;
+  cursor: pointer;
 }
 
 .op-08 {
