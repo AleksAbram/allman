@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 module.exports = {
   async up(queryInterface) {
-    const item_name = "Галстуки";
+    const item_name = "Бабочки";
     const prices = [900, 900, 900, 700, 700, 700, 700, 700, 700, 700, 700, 700, 700];
     const descriptions = [
       "Бабочка комбинированная ЧБ",
@@ -18,7 +18,7 @@ module.exports = {
       "Бабочка темно-серая",
       "Бабочка ярко-голубая",
     ];
-    const typeId = 5;
+    const typeId = 15;
     const item_details =
       "Коллекция: AW 2021/2022Состав: 50% вискоза и 50% шёлк Сезон: Весна / Лето";
     const item_care = "Деликатная стирка при 30°";

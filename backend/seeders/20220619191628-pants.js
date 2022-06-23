@@ -8,7 +8,7 @@ module.exports = {
       "брюки черные casual",
       "брюки бежевые casual",
     ];
-    const typeId = 5;
+    const typeId = 8;
     const item_details =
       "Коллекция: AW 2021/2022Состав:  состав: 98% хлопок, 2% эластан Сезон: Весна / Лето";
     const item_care = "Деликатная стирка при 30°";
