@@ -2,7 +2,6 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Auth from '../Authorization/Authorization';
 
-// import DetailPage from '../../pages/detail/DetailPage';
 
 import Map from '../YM/YandexMap';
 
@@ -19,19 +18,23 @@ import { useDispatch } from 'react-redux';
 import action from '../../redux/thunk/asyncItem';
 import { useEffect } from 'react';
 import ItemPageForEdit from '../ItemPage/ItemPageForEdit';
+
 import Atelier from '../Atelier/Atelier';
+
+import Basket from '../Basket/Basket';
+
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(checkAuthFetch())
-    dispatch(action.itemsFetch());
+    //dispatch(action.itemsFetch());
   }, [dispatch])
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         {/* <Route path="/map" element={<Map />} /> */}
-        {/* <Route path="/detail/:id" element={<DetailPage />} /> */}
+
 
         <Route path="/map" element={<Map />} />
         <Route path="/auth" element={<Auth />} />
@@ -41,9 +44,11 @@ function App() {
         <Route path="/atelier" element={<Atelier/>} />
         <Route path="/certificates" element={<GiftCertificates/>} />
         {/* <Route path="/items" element={<ItemPage />} /> */}
-        <Route path="/items" element={<ItemListPage type={1}/>} />
-        <Route path="/items/:id" element={<ItemPage/>} />
+        {/* <Route path="/items" element={<ItemListPage type={1}/>} /> */}
+        <Route path="/items/types/:type" element={<ItemListPage />} />
 
+        <Route path="/items/:id" element={<ItemPage/>} />
+        <Route path="/basket" element={<Basket/>} />
         <Route path="/admin/items/:id" element={<ItemPageForEdit/>} />
       </Routes>
       <Footer />

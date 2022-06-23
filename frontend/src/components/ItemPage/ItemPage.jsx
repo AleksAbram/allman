@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { addToBasketAC } from "../../redux/actionCreators/basketAC";
 import action from "../../redux/thunk/asyncItem";
 import "./ItemPage.css";
 
@@ -12,6 +13,24 @@ function ItemPage() {
   const items = useSelector((state) => state.item.list);
   const [selectedSize, setSelectedSize] = useState('');
   const [item, setItem] = useState(null);
+  const basket = useSelector((state) => state.basket.basket);
+  const [buttonText, setButtonText] = useState(`Добавить \n в корзину`);
+  //const basket = useSelector
+
+  const handleBasketAdd = () => {
+    if (basket.some((item) => item.item.id === Number(id))) {
+      return;
+    }
+    const payload = {item, size: selectedSize};
+    dispatch({type: 'ADD_TO_BASKET', payload})
+    
+  }
+
+  useEffect(() => {
+    if (basket.some((item) => item.item.id === Number(id))) {
+      setButtonText('Уже \n в корзине')
+    }
+  }, [basket, id])
 
 
   useEffect(() => {
@@ -52,7 +71,7 @@ function ItemPage() {
           <div className="detail">{item.item_details}</div>
           <div className="detail">{item.item_care}</div>
         </div>
-        <div className="basket-button op-08">Добавить<br />в корзину</div>
+        <div onClick={handleBasketAdd} className="basket-button op-08">{buttonText}</div>
       </div>
       </>
 }

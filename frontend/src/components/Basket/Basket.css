@@ -1,0 +1,117 @@
+.basket-row {
+  display: flex;
+  width: 80%;
+  margin-bottom: 2vw;
+  align-items: flex-start;
+  height: 20vw;
+}
+
+.basket-item-image {
+  object-fit: scale-down;
+  height: 20vw;
+}
+.basket-item-info {
+  margin-left: 5vw;
+}
+
+.basket {
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.basket-item-name {
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 1.2vw;
+}
+
+.basket-item-price {
+  font-size: 1.2vw;
+}
+
+.basket-item-size {
+  font-size: 1.2vw;
+  margin-top: 1vw;
+}
+
+
+.basket-delete-button{
+  display: flex;
+  /* margin-left: auto; */
+  width: 5vw;
+  height: 5vw;
+  background-color: black;
+  font-size: 1.5vw;
+  text-align: center;
+  color: white;
+  align-items: center;
+  justify-content: center;
+}
+
+.basket-action {
+  margin-top: 1vw;
+  width: fit-content;
+  background-color: black;
+  padding: .5vw 4vw .5vw 4vw;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1.4vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quantity-group {
+  display: flex;
+  width: 10vw;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: 3vw;
+  border-top: solid rgb(209, 209, 209) 1px;
+  border-bottom: solid rgb(209, 209, 209) 1px;
+
+}
+
+.plus-minus {
+  display: flex;
+  width: 3vw;
+  font-size: 2vw;
+  height: 3vw;
+  background-color: white;
+  text-align: center;
+  color: black;
+  align-items: center;
+  justify-content: center;
+  border-left: solid rgb(209, 209, 209) 1px;
+  border-right: solid rgb(209, 209, 209) 1px;
+  align-items: center;
+  -webkit-user-select: none;
+  user-select: none;
+
+}
+.quantity {
+  display: flex;
+  font-size: 1.5vw;
+  width: 3vw;
+  height: 3vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.basket-row-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  align-items: center;
+}
+
+.unselectable {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.empty-basket-message {
+  font-style: italic;
+}
