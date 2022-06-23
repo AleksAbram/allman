@@ -7,6 +7,7 @@ const initialState = {
   error: null,
   loading: false,
   path: [],
+  crudSuccess: false,
 };
 
 // eslint-disable-next-line default-param-last
@@ -18,6 +19,26 @@ function itemReducer(prevState = initialState, action) {
   });
 
   switch (action.type) {
+    case itemAT.DELETE_ITEM_SUCCESS: {
+      return {
+        ...prevState,
+        list: prevState.list.filter((item) => item.id !== action.payload.id),
+      }
+    } 
+
+    case itemAT.ADD_ITEM_SUCCESS: {
+      const newList = prevState.list.filter((item) => item.id !== action.payload.id);
+      return {
+        ...prevState,
+        loading: false,
+
+        list: [...newList, {...action.payload,
+          item_price: formatter.format(action.payload.item_price)
+        },
+        ],
+        crudSuccess: true,
+      }
+    }
 
     case itemAT.GET_ITEM_SUCCESS: {
       return {

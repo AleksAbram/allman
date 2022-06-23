@@ -27,6 +27,7 @@
 .detail{
   padding-bottom: 1vw;
   font-size: 1.1vw;
+  white-space: pre-line;
 }
 .info-size-label {
   font-size: 1.1vw;
@@ -42,6 +43,7 @@
   margin-top: .5vw;
   width: 100%;
   font-size: 1.1vw;
+  transition: all 1s;
 }
 
 .basket-button {
@@ -63,12 +65,15 @@
   border-radius: 10px;
   border-style: none;
   padding: 10px;
-  background-color: rgba(0, 0, 0, 0.03);
+  /* background-color: rgba(0, 0, 0, 0.03); */
+  background-color: rgba(250, 235, 215, 0.23);
+  /* opacity: 40%; */
   outline: none;
 }
 
 .item-form {
   width: 100;
+  /* background-color: antiquewhite; */
 }
 
 .edit-info {
@@ -86,8 +91,7 @@ height: 100;
   padding: .5vw 4vw .5vw 4vw;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.4vw;
-  margin-left: auto;
-  margin-right: auto;
+
   border: none;
 }
 
@@ -117,6 +121,22 @@ height: 100;
   background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
 }
 
-.slider-container{
-  /* position: absolute */
+.ok-button {
+  background-color: rgb(0, 60, 0);
 }
+
+.item-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.delete-button {
+  width: fit-content;
+  background-color: black;
+  padding: .5vw 4vw .5vw 4vw;
+  color: rgb(193, 118, 118);
+  font-size: 1.4vw;
+  margin-left: auto;
+  border: none;
+}
+

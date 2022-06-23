@@ -27,6 +27,23 @@ class ItemController {
   //   res.json({ ok: 'OK' });
   // }
 
+  async delete(req, res) {
+    const { id } = req.params;
+    try {
+      ItemImage.destroy({
+        where: { itemId: id },
+      });
+      Item.destroy({
+        where: { id },
+      });
+      res.status(200);
+      res.json({ message: 'deleted' });
+    } catch (e) {
+      res.status(500);
+      res.json({ message: e.message });
+    }
+  }
+
   async create(req, res, next) {
     try {
       const {
@@ -39,7 +56,22 @@ class ItemController {
       const item = await Item.create({
         item_name, item_price, item_details, typeId, item_description,
       });
-      return res.json(item);
+
+      const newItem = await Item.findOne(
+        {
+          where: { id: item.id },
+
+          include: [
+            {
+              model: ItemImage,
+              as: 'item_images',
+            }],
+          order: [
+            ['item_images', 'updatedAt', 'DESC'],
+          ],
+        },
+      );
+      return res.json(newItem);
     } catch (e) {
       next(ApiError.badRequest(e.message));
     }
@@ -71,7 +103,7 @@ class ItemController {
       limit, page,
     } = req.query;
     page = page || 1;
-    limit = limit || 9;
+    limit = limit || 100;
     const offset = page * limit - limit;
     let items;
     try {

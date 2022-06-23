@@ -1,19 +1,22 @@
 import { useRef, useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import action from "../../redux/thunk/asyncItem";
+import { itemAT } from "../../redux/actionTypes/itemAT";
 import "./ItemPage.css";
 
 function ItemPageForEdit() {
   const {id} = useParams();
-  const form = useRef();
   const dispatch = useDispatch();
+  const deleteButton = useRef();
   const items = useSelector((state) => state.item.list);
   const [item, setItem] = useState(null);
   const [image, setImage] = useState(null);
   const [newImage, setNewImage] = useState(null);
-
+  const [saveButtonCaption, setSaveButtonCaption] = useState('Сохранить');
+  const [deleteConfirmed, setDeleteConfirmed] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
 
@@ -40,6 +43,7 @@ function ItemPageForEdit() {
 
 
   const changeHandler = (e) => {
+    setSaveButtonCaption("Сохранить");
     setItem((prevState) => {
       const newItem = {...prevState};
       newItem[e.target.name] = e.target.value;
@@ -51,15 +55,41 @@ function ItemPageForEdit() {
     setNewImage(window.URL.createObjectURL(e.target.files[0]))
   }
 
+
+
+  const handleDelete = () => {
+    if (!deleteConfirmed) {
+      setDeleteConfirmed(true);
+
+      deleteButton.current.style["color"] = "white";
+      deleteButton.current.style.backgroundColor = "rgb(117, 9, 9)";
+      return;
+    }
+    fetch(`http://localhost:4000/api/items/${id}`, {
+      method: 'DELETE',
+    }).then((res) => res.json())
+      .then((data) => {
+        console.log('deleted');
+        dispatch({type: itemAT.DELETE_ITEM_SUCCESS, payload: {id}});
+        navigate('/items/types/5');
+      }).catch(error => console.log(error.message));
+  }
+
   const submitHandler = (e) => {
     e.preventDefault();
+    if (saveButtonCaption === "Закрыть") {
+      navigate("/items/types/5");
+      return;
+    }
     const formData = new FormData(e.target);
     fetch(`http://localhost:4000/api/items/${id}`, {
       method: 'POST',
       body: formData,
     }).then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        console.log('ok');
+        dispatch({type: itemAT.ADD_ITEM_SUCCESS, payload: data});
+        setSaveButtonCaption("Закрыть");
       }).catch(error => console.log(error.message));
   };
 
@@ -77,8 +107,10 @@ function ItemPageForEdit() {
             <textarea id="item_details" rows="4" name="item_details" className="item-input" value={item.item_details} onChange={changeHandler} type="text" placeholder="детали"/>
             <input name="item_care" className="item-input" value={item.item_care} onChange={changeHandler} type="text" placeholder="инструкции по уходу"/>
             <input name="item_images" className="item-input custom-file-input" type="file" multiple={true} onChange={fileChange}accept="image/png, image/jpg, image/gif, image/jpeg"/>
-
-            <button type="Submit" className="save-button op-08">Сохранить</button>
+            <div className="item-buttons">
+              <button type="Submit" className="save-button op-08">{saveButtonCaption}</button>
+              <button ref={deleteButton} type="button"className="delete-button" onClick={handleDelete}>{deleteConfirmed ? "Да, удалить" : "Удалить"}</button>
+            </div>  
         </form>
       </div>
       </div>
