@@ -95,6 +95,7 @@ export default function SideBar(props) {
 
   return (
     <div>
+      <img src="img/login.png" alt="x"/>
       <MultilevelSidebar
         wrapperClassName={'customSidebar'}
         open={props.isOpen}
