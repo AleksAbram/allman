@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRef } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { addToBasketAC } from "../../redux/actionCreators/basketAC";
 import action from "../../redux/thunk/asyncItem";
 import "./ItemPage.css";
@@ -13,13 +13,19 @@ function ItemPage() {
   const {id} = useParams();
   const dispatch = useDispatch();
   const sizeSelect = useRef();
+  const navigate = useNavigate()
   const sizes = useSelector((state) => state.item.sizes);
   const items = useSelector((state) => state.item.list);
   const [selectedSize, setSelectedSize] = useState('');
   const [item, setItem] = useState(null);
   const basket = useSelector((state) => state.basket.basket);
   const [buttonText, setButtonText] = useState(`Добавить \n в корзину`);
-  //const basket = useSelector
+  const [buttonTextAdmin, setButtonTextAdmin] = useState(`Редактировать`);
+  const user = useSelector((state) => state.user)
+  console.log(user);
+  function handleAdmin () {
+    navigate(`/admin/items/${id}`)
+  }
 
   const handleBasketAdd = () => {
     if (basket.some((item) => item.item.id === Number(id))) {
@@ -106,7 +112,17 @@ function ItemPage() {
           <div className="detail">{item.item_details.split('<br>').join('\n')}</div>
           <div className="detail">{item.item_care}</div>
         </div>
-        <div onClick={handleBasketAdd} className="basket-button op-08">{buttonText}</div>
+        {
+          user.user !== 'Admin' 
+          ?
+          (  
+            <div onClick={handleBasketAdd} className="basket-button op-08">{buttonText}</div>
+          )
+          :
+          (
+            <div onClick={handleAdmin} className="basket-button op-08">{buttonTextAdmin}</div>
+          )
+        }
       </div>
       </>
 }

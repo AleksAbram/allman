@@ -98,7 +98,7 @@ export default function Auth() {
                 Sign Up
               </Typography>
 
-              <ValidatorForm
+              <Box
                 component="form"
                 noValidate
                 onSubmit={handleSubmit}
@@ -117,7 +117,7 @@ export default function Auth() {
                     />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextValidator
+                    <TextField
                       required
                       fullWidth
                       id="email"
@@ -162,7 +162,7 @@ export default function Auth() {
                   </div>
                   </Grid>
                 </Grid>
-              </ValidatorForm>
+              </Box>
             </Box>
           </Container>
         </ThemeProvider>

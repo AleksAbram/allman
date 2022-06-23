@@ -15,6 +15,7 @@ import AuthButton from '../UI/AuthButton/AuthButton';
 import SideBar from '../SideBar/SideBar';
 import BasketIcon from "../BasketIcon/BasketIcon";
 import './Header.css'
+import { useNavigate } from "react-router-dom";
 
 const drawerWidth = 140;
 
@@ -65,7 +66,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 
 export default function Header() {
   const dispatch = useDispatch()
-
+  const navigate = useNavigate()
   const {user} = useSelector((state) => state.user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -78,6 +79,9 @@ export default function Header() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  function homeLink () {
+    navigate('/')
+  }
 
   return (
 
@@ -96,7 +100,7 @@ export default function Header() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography className="allmanHome" onClick={homeLink} variant="h6" noWrap component="div">
             ALLMAN
           </Typography>
 <div className="basketAndExit">
