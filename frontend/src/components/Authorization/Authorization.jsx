@@ -14,6 +14,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyButton from "../UI/MyButton/MyButton";
 import { authUsersFetch, regUsersFetch } from "../../redux/thunk/asyncUser";
+
+import "./Auth.css"
 import { useDispatch, useSelector } from "react-redux";
 import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
 
@@ -55,6 +57,7 @@ export default function Auth() {
     const user = {
       user_email: data.get("email"),
       user_password: data.get("password"),
+
     };
     dispatch(authUsersFetch(user));
   };
@@ -90,12 +93,10 @@ export default function Auth() {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
               <Typography component="h1" variant="h5">
-                Sign up
+                Sign Up
               </Typography>
+
               <ValidatorForm
                 component="form"
                 noValidate
@@ -154,17 +155,16 @@ export default function Auth() {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                    <MyButton
-                      style={{ marginTop: 30 }}
-                      onClick={(e) => loginator(e)}
-                    >
-                      Логин
-                    </MyButton>
+                  <div
+                    style={{ marginTop: 30 }}
+                    onClick={(e) => registr(e)}
+                  >
+                    or Sign In
+                  </div>
                   </Grid>
                 </Grid>
               </ValidatorForm>
             </Box>
-            <Copyright sx={{ mt: 5 }} />
           </Container>
         </ThemeProvider>
       ) : (
@@ -179,9 +179,6 @@ export default function Auth() {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
-              </Avatar>
               <Typography component="h1" variant="h5">
                 Sign in
               </Typography>
@@ -211,6 +208,7 @@ export default function Auth() {
                   id="password"
                   autoComplete="current-password"
                 />
+
                 <div style={{ color: "red" }}>{error}</div>
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
@@ -224,24 +222,21 @@ export default function Auth() {
                 >
                   Sign In
                 </Button>
+                <Typography component="h1" variant="h5">
+                  <div
+                    style={{ marginTop: 30 }}
+                    onClick={(e) => registr(e)}
+                  >
+                    or Sign Up
+                  </div>
+                </Typography>
                 <Grid container>
-                  <Grid item xs>
-                    <Link href="#" variant="body2">
-                      Forgot password?
-                    </Link>
-                  </Grid>
                   <Grid item>
-                    <MyButton
-                      style={{ marginTop: 30 }}
-                      onClick={(e) => registr(e)}
-                    >
-                      Регистрация
-                    </MyButton>
+
                   </Grid>
                 </Grid>
               </Box>
             </Box>
-            <Copyright sx={{ mt: 8, mb: 4 }} />
           </Container>
         </ThemeProvider>
       )}
