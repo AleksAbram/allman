@@ -88,7 +88,7 @@ function ItemPage() {
         </div>
         <div className="details">
           <div className="detail">{item.item_description}</div>
-          <div className="detail">{item.item_details}</div>
+          <div className="detail">{item.item_details.split('<br>').join('\n')}</div>
           <div className="detail">{item.item_care}</div>
         </div>
         <div onClick={handleBasketAdd} className="basket-button op-08">{buttonText}</div>

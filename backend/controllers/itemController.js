@@ -27,6 +27,23 @@ class ItemController {
   //   res.json({ ok: 'OK' });
   // }
 
+  async delete(req, res) {
+    const { id } = req.params;
+    try {
+      ItemImage.destroy({
+        where: { itemId: id },
+      });
+      Item.destroy({
+        where: { id },
+      });
+      res.status(200);
+      res.json({ message: 'deleted' });
+    } catch (e) {
+      res.status(500);
+      res.json({ message: e.message });
+    }
+  }
+
   async create(req, res, next) {
     try {
       const {
