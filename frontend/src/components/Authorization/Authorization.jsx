@@ -49,6 +49,7 @@ export default function Auth() {
       user_password: data.get("password"),
       user_name: data.get("firstName"),
     };
+    console.log(user);
     dispatch(regUsersFetch(user));
   };
   const handleSubmitLog = (event) => {

@@ -11,8 +11,8 @@ module.exports = {
     ];
     const typeId = 7;
     const item_details =
-      'Коллекция: AW 2021/2022Состав: 70%-хлопок; 28%-вискоза; 2%-эластан Сезон: Весна / Лето';
-    const item_care = 'Химчистка, паровая чистка';
+      'Коллекция: AW 2021/2022<br>Состав: 70%-хлопок; 28%-вискоза; 2%-эластан<br>Сезон: Весна / Лето';
+    const item_care = 'Уход: Химчистка, паровая чистка';
     const items = prices.map((item_price, i) => ({
       item_price,
       item_name,

@@ -12,8 +12,8 @@ module.exports = {
     ];
     const typeId = 13;
     const item_details =
-      "Коллекция: AW 2021/2022Состав: натуральная кожаСезон: Весна / Лето";
-    const item_care = "Только сухая чистка и обработка питательными кремами";
+      "Коллекция: AW 2021/2022<br>Состав: натуральная кожа<br>Сезон: Весна / Лето";
+    const item_care = "Уход: Только сухая чистка и обработка питательными кремами";
     const items = prices.map((item_price, i) => ({
       item_price,
       item_name,
