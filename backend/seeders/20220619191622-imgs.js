@@ -12,14 +12,14 @@ module.exports = {
       4,
     ];
     const urls = [
-      '/img/IMG_5533.JPG',
-      '/img/IMG_5534.JPG',
-      '/img/IMG_5535.JPG',
-      '/img/IMG_5536.JPG',
-      '/img/IMG_5537.JPG',
-      '/img/IMG_5538.JPG',
-      '/img/IMG_5539.JPG',
-      '/img/IMG_5540.JPG',
+      '/uploads/IMG_5533.JPG',
+      '/uploads/IMG_5534.JPG',
+      '/uploads/IMG_5535.JPG',
+      '/uploads/IMG_5536.JPG',
+      '/uploads/IMG_5537.JPG',
+      '/uploads/IMG_5538.JPG',
+      '/uploads/IMG_5539.JPG',
+      '/uploads/IMG_5540.JPG',
     ];
     const imgs = itemIds.map((itemId, i) => ({
       item_image_url: urls[i],
@@ -28,7 +28,6 @@ module.exports = {
       createdAt: new Date(),
     }));
 
-    console.log(imgs);
     await queryInterface.bulkInsert('item_images', imgs);
   },
 

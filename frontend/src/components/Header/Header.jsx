@@ -99,6 +99,7 @@ export default function Header() {
           <Typography variant="h6" noWrap component="div">
             ALLMAN
           </Typography>
+<div className="basketAndExit">
           {user.length > 0 ? (
             <AuthButton sx={{ marginTop: 30 }} onClick={() => dispatch(logoutFetch())}>
               Выйти
@@ -106,7 +107,7 @@ export default function Header() {
           ) : (
             <div>
               <img 
-              src="img/login.png" alt="x" 
+              src="/img/login.png" alt="x" 
               className="authIcon"
               sx={{ marginTop: 30 }}
               onClick={() => setModalLog(true)}
@@ -118,8 +119,8 @@ export default function Header() {
           <MyModal visible={modalLog} setVisible={setModalLog}>
             {modalLog && <Auth />}
           </MyModal>
-
           <BasketIcon />
+          </div>
         </Toolbar>
       </AppBar>
       <SideBar setOpen={setOpen} isOpen={open} />

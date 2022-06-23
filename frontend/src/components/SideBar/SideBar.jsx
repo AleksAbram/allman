@@ -1,7 +1,7 @@
 import MultilevelSidebar from "react-multilevel-sidebar";
 import "react-multilevel-sidebar/src/Sidebar.css";
 import "./SideBar.css"
-let options = [
+const options = [
   {
     content: [
       {
@@ -90,11 +90,11 @@ let options = [
 
 export default function SideBar(props) {
   const handleClick = (itemOptions) => {
- 
   };
 
   return (
     <div>
+      <img src="/img/login.png" alt="x"/>
       <MultilevelSidebar
         wrapperClassName={'customSidebar'}
         open={props.isOpen}
