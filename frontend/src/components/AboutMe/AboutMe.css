@@ -82,7 +82,7 @@
       display: flex;
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         color: #202020;
-        letter-spacing: -2px;
+        letter-spacing: -1px;
         display: block;
         margin: 11px 0 17px 0;
         font-size: 20px;
@@ -97,4 +97,5 @@
       font-size: 30px;
       justify-content: center;
       margin-bottom: 1%;
+      letter-spacing: -2px;
   }
