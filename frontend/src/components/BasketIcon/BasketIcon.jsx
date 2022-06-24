@@ -10,7 +10,7 @@ const BasketIcon = () => {
   return (
     <div className="bagCont">
       <img src="/img/BAG.png" alt="x" className="bag" onClick={(e) => navigate('./basket')} />
-      {basket.length > 0 ? <span className='number'>{basket.length}</span> : ''}
+      {basket.length > 0 ? <div className='number'>{basket.length}</div> : ''}
     </div>
   );
 };

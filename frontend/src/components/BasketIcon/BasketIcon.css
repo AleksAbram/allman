@@ -5,11 +5,17 @@
   margin-left: 60%;
   margin-right: calc(10px + 1vw);
   cursor: pointer;
-  top: 10px;
+  /* top: 10px; */
 }
 .number{
-  position: relative;
-left: 100%;
-top: -15px;
+  position: absolute;
+  left: 105%;
+  top: -50%;
 /* left: 5px; */
+}
+
+.bagCont {
+  display: flex;
+  position: relative;
+  align-items: center;
 }
