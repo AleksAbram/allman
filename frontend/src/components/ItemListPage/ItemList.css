@@ -45,10 +45,22 @@
   font-size: 0.8vw;
   cursor: pointer;
   margin-left: 1vw;
+  /* background-color: beige; */
 }
 
 .chevron {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  text-transform: uppercase;
+  font-size: 0.8vw;
+  margin-left: 1vw;
+  /* background-color: beige; */
+  padding-bottom: 0.2vw;
+  /* display: table;
+  vertical-align: middle;
   margin-left: 1vw;
   margin-right: 1vw;
-  font-size: 1.2vw;
+  font-size: 0.8vw;
+  background-color: antiquewhite; */
 }
