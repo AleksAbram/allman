@@ -105,9 +105,14 @@ export default function Header() {
           </Typography>
 <div className="basketAndExit">
           {user.length > 0 ? (
-            <AuthButton sx={{ marginTop: 30 }} onClick={() => dispatch(logoutFetch())}>
-              Выйти
-            </AuthButton>
+            <div> 
+             <img 
+             src="/img/Vector.png" alt="x"
+             className="authIcon"
+             sx={{ marginTop: 30 }} 
+             onClick={() => dispatch(logoutFetch())}
+              />
+            </div>
           ) : (
             <div>
               <img 
