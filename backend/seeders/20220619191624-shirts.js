@@ -11,8 +11,8 @@ module.exports = {
     ];
     const typeId = 6;
     const item_details =
-      "Коллекция: AW 2021/2022Состав: 100% лён Сезон: Весна / Лето";
-    const item_care = "Деликатная стирка при 30°";
+      "Коллекция: AW 2021/2022<br>Состав: 100% лён<br>Сезон: Весна / Лето";
+    const item_care = "Уход: Деликатная стирка при 30°";
     const items = prices.map((item_price, i) => ({
       item_price,
       item_name,

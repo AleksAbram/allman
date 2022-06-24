@@ -15,8 +15,8 @@ module.exports = {
     ];
     const typeId = 14;
     const item_details =
-      "Коллекция: AW 2021/2022Состав: 50% вискоза и 50% шёлк Сезон: Весна / Лето";
-    const item_care = "ТДеликатная стирка при 30°";
+      "Коллекция: AW 2021/2022<br>Состав: 50% вискоза и 50% шёлк<br>Сезон: Весна / Лето";
+    const item_care = "Уход: Деликатная стирка при 30°";
     const items = prices.map((item_price, i) => ({
       item_price,
       item_name,

@@ -15,8 +15,8 @@ module.exports = {
       'Костюм двубортный серый в светлую клетку',
     ];
     const typeId = 5;
-    const item_details = 'Коллекция: AW 2021/2022Состав: 80% шерсть, 20% вискозаСезон: Весна / Лето';
-    const item_care = 'Только химчистка';
+    const item_details = 'Коллекция: AW 2021/2022<br>Состав: 80% шерсть, 20% вискоза<br>Сезон: Весна / Лето';
+    const item_care = 'Уход: Только химчистка';
     const items = prices.map((item_price, i) => ({
       item_price,
       item_name,

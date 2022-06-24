@@ -10,8 +10,8 @@ module.exports = {
     ];
     const typeId = 8;
     const item_details =
-      "Коллекция: AW 2021/2022Состав:  состав: 98% хлопок, 2% эластан Сезон: Весна / Лето";
-    const item_care = "Деликатная стирка при 30°";
+      "Коллекция: AW 2021/2022<br>Состав:  состав: 98% хлопок, 2% эластан<br>Сезон: Весна / Лето";
+    const item_care = "Уход: Деликатная стирка при 30°";
     const items = prices.map((item_price, i) => ({
       item_price,
       item_name,
