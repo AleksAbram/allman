@@ -45,7 +45,7 @@ const options = [
             content: [{ id: 1, name: "Дерби", to: "/items/types/9" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
-            content: [{ id: 1, name: "Оксворды", to: "/items/types/10" }]
+            content: [{ id: 1, name: "Оксфорды", to: "/items/types/10" }]
           }, {
             titleIcon: <i className="fa fa-opera"></i>,
             content: [{ id: 1, name: "Монки", to: "/items/types/11" }]
