@@ -91,7 +91,7 @@ height: 100;
   padding: .5vw 4vw .5vw 4vw;
   color: rgba(255, 255, 255, 0.8);
   font-size: 1.4vw;
-
+  cursor: pointer;
   border: none;
 }
 
@@ -123,6 +123,7 @@ height: 100;
 
 .ok-button {
   background-color: rgb(0, 60, 0);
+  cursor: pointer;
 }
 
 .item-buttons {
@@ -138,5 +139,7 @@ height: 100;
   font-size: 1.4vw;
   margin-left: auto;
   border: none;
+  cursor: pointer;
 }
+
 

@@ -14,10 +14,11 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import MyButton from "../UI/MyButton/MyButton";
 import { authUsersFetch, regUsersFetch } from "../../redux/thunk/asyncUser";
+import {useNavigate} from 'react-router-dom'
 
-import "./Auth.css"
+import "./Auth.css";
 import { useDispatch, useSelector } from "react-redux";
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+import { ValidatorForm, TextValidator } from "react-material-ui-form-validator";
 
 function Copyright(props) {
   return (
@@ -41,6 +42,7 @@ const theme = createTheme();
 
 export default function Auth() {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -58,14 +60,13 @@ export default function Auth() {
     const user = {
       user_email: data.get("email"),
       user_password: data.get("password"),
-
     };
     dispatch(authUsersFetch(user));
   };
   const error = useSelector((state) => state.user.error);
 
   const [modalReg, setModalReg] = React.useState(false);
-  const [modalLog, setModalLog] = React.useState(false);
+  // const [modalLog, setModalLog] = React.useState(false);
   const [emailType, setEmailType] = React.useState("");
   function handleChange(event) {
     const email = event.target.value;
@@ -73,13 +74,14 @@ export default function Auth() {
   }
   const { email } = emailType;
   function registr(e) {
-    e.preventDefault();
+    // e.preventDefault();
     setModalReg(true);
   }
   function loginator(e) {
-    e.preventDefault();
-    setModalLog(true);
+    // e.preventDefault();
+    setModalReg(false);
   }
+  
   return (
     <>
       {modalReg ? (
@@ -156,10 +158,7 @@ export default function Auth() {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                  <div
-                  >
-                    or Sign In
-                  </div>
+                    <div onClick={() => loginator()} >or Sign In</div>
                   </Grid>
                 </Grid>
               </Box>
@@ -219,12 +218,9 @@ export default function Auth() {
                 </Button>
                 <Grid container justifyContent="flex-end">
                   <Grid item>
-                  <div
-                    style={{ marginTop: 30 }}
-                    onClick={(e) => registr(e)}
-                  >
-                    or Sign Up
-                  </div>
+                    <div style={{ marginTop: 30 }} onClick={(e) => registr(e)}>
+                      or Sign Up
+                    </div>
                   </Grid>
                 </Grid>
               </Box>

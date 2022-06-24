@@ -2,6 +2,8 @@
 .map-container {
     margin: 20px 0;
     filter: grayscale(0.8) brightness(1) ;
+    width: 60vw;
+    align-content: center;
   }
   
   .map-container .ymaps-2-1-79-ground-pane {

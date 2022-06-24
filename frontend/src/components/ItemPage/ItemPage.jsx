@@ -82,7 +82,7 @@ function ItemPage() {
           width={'34vw'}
           height={'42vw'}
           object-fit={'scale-down'}
-          images={[{ url: `http://localhost:4000${item.item_images[0].item_image_url}` }, { url: `http://localhost:4000${item.item_images[1].item_image_url}` }]}
+          images={[{ url: `http://localhost:4000${item?.item_images[0]?.item_image_url}` }, { url: `http://localhost:4000${item?.item_images[1]?.item_image_url}` }]}
           // showBullets={true}
           // showNavs={true}
           autoPlay={true}
@@ -96,7 +96,7 @@ function ItemPage() {
           <div className="info-name">{item.item_name}</div>
           <div className="info-price">{item.item_price}</div>
         </div>
-        <div className="size">
+        <div className="size pointer">
           <div className="info-size-label">Выберите размер:</div>
           <select ref={sizeSelect} value={selectedSize} onChange={handleSelect} className="size-select">
           <option value={-1}>...</option>  
@@ -116,11 +116,11 @@ function ItemPage() {
           user.user !== 'Admin' 
           ?
           (  
-            <div onClick={handleBasketAdd} className="basket-button op-08">{buttonText}</div>
+            <div onClick={handleBasketAdd} className="basket-button op-08 pointer">{buttonText}</div>
           )
           :
           (
-            <div onClick={handleAdmin} className="basket-button op-08">{buttonTextAdmin}</div>
+            <div onClick={handleAdmin} className="basket-button op-08 pointer">{buttonTextAdmin}</div>
           )
         }
       </div>
