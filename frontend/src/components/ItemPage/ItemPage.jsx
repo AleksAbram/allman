@@ -82,9 +82,7 @@ function ItemPage() {
           width={'34vw'}
           height={'42vw'}
           object-fit={'scale-down'}
-          images={[{ url: `http://localhost:4000${item?.item_images[0]?.item_image_url}` }, { url: `http://localhost:4000${item?.item_images[1]?.item_image_url}` }]}
-          // showBullets={true}
-          // showNavs={true}
+          images={item?.item_images.map((image) => ({url: `http://localhost:4000${image.item_image_url}`}))}
           autoPlay={true}
           loop={true}
           slideDuration={2}
