@@ -31,7 +31,8 @@ function ItemPage() {
     if (basket.some((item) => item.item.id === Number(id))) {
       return;
     }
-    if (!selectedSize) {
+    console.log(sizeSelect.current);
+    if (!selectedSize && sizes.filter((size) => size.typeId === item.typeId).length > 0) {
       sizeSelect.current.style["border-color"]="red";
 
       sizeSelect.current.style.color="red";
@@ -94,6 +95,7 @@ function ItemPage() {
           <div className="info-name">{item.item_name}</div>
           <div className="info-price">{item.item_price}</div>
         </div>
+        { sizes.filter((size) => size.typeId === item.typeId).length > 0 &&
         <div className="size pointer">
           <div className="info-size-label">Выберите размер:</div>
           <select ref={sizeSelect} value={selectedSize} onChange={handleSelect} className="size-select">
@@ -105,6 +107,7 @@ function ItemPage() {
           )}
           </select>
         </div>
+        } 
         <div className="details">
           <div className="detail">{item.item_description}</div>
           <div className="detail">{item.item_details.split('<br>').join('\n')}</div>
