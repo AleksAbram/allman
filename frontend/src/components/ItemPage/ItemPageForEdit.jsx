@@ -78,7 +78,8 @@ function ItemPageForEdit() {
   const submitHandler = (e) => {
     e.preventDefault();
     if (saveButtonCaption === "Закрыть") {
-      navigate("/items/types/5");
+      navigate(`/items/types/${item.typeId}`);
+      // navigate("/items/types/5");
       return;
     }
     const formData = new FormData(e.target);
