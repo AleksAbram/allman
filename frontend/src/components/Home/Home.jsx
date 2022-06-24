@@ -13,10 +13,16 @@ function Home() {
     navigate("/items/types/4");
   }
   function barbershopLink () {
-    navigate("/barbershop/")
+    window.location.href= "https://n771686.yclients.com/"
+    // res.redirect("/https://n771686.yclients.com/")
   }
   function atelierLink () {
-    navigate("/atelier")
+    // navigate("/https://n771701.yclients.com/")
+    window.location.href= "https://n771701.yclients.com/"
+  }
+  function styleLink () {
+    // navigate("/https://n771701.yclients.com/")
+    window.location.href= "https://n771702.yclients.com/"
   }
 
   return (
@@ -73,7 +79,7 @@ function Home() {
       </div>
       </section>
       
-      <div className="stylist">
+      <div onClick={styleLink} className="stylist">
         <div className="action">
           <div className="action-label">
             Бесплатная

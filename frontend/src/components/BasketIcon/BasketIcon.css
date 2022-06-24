@@ -1,6 +1,15 @@
 .bag {
+  position: relative;
   width: calc(10px + 1vw);
   height: calc(10px + 1vw);
   margin-left: 60%;
   margin-right: calc(10px + 1vw);
+  cursor: pointer;
+  top: 10px;
+}
+.number{
+  position: relative;
+left: 100%;
+top: -15px;
+/* left: 5px; */
 }

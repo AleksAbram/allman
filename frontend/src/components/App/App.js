@@ -36,7 +36,7 @@ function App() {
         {/* <Route path="/map" element={<Map />} /> */}
 
 
-        <Route path="/map" element={<Map />} />
+        {/* <Route path="/map" element={<Map />} /> */}
         <Route path="/auth" element={<Auth />} />
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutMe/>} />
