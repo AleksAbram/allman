@@ -17,13 +17,38 @@
 }
 
 .items-list {
-  margin-left: auto;
-  margin-right: auto;
   display: flex;
   flex-wrap: wrap;
   width: 85vw;
   padding: 2vw;
 }
 
+.list-container {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  width: 85vw;
+  flex-direction: column;
+}
 
+.path {
+  display: flex;
+  margin-left: 2vw;
+  align-items: center;
+}
 
+.path-seg {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  text-transform: uppercase;
+  font-size: 0.8vw;
+  cursor: pointer;
+  margin-left: 1vw;
+}
+
+.chevron {
+  margin-left: 1vw;
+  margin-right: 1vw;
+  font-size: 1.2vw;
+}
