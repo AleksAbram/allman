@@ -64,7 +64,7 @@ function ItemListPage() {
       // TODO: очистить эффект отправки fetch-запроса (отменить запрос)
       // AbortController
     };
-  }, [dispatch]);
+  }, [dispatch, type]);
 
   return (
     <>
